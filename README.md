@@ -226,7 +226,7 @@ useEffect(()=>{
 ```
 npm i react-router-dom @types/react-router-dom
 ```
-Now, the first step is to wrap our App with BrowserRouter tag:
+**1.** The first step is to wrap our App with BrowserRouter tag:
 
 ```
 import { BrowserRouter } from 'react-router-dom';
@@ -238,10 +238,10 @@ root.render(
 );
 ```
 
-The best practice is to create routing component. It may include:
-- Custom route, to different part of site/API
-- Default route - what component should be loaded on default route
-- Not-existing route - what component should be loaded on not-existing route
+**2.** The best practice is to create routing component. It may include:
+    - Custom route, to different part of site/API
+    - Default route - what component should be loaded on default route
+    - Not-existing route - what component should be loaded on not-existing route
 
 ```
 function Routing(): JSX.Element {
@@ -266,15 +266,15 @@ function Routing(): JSX.Element {
 export default Routing;
 ```
 
-Then, we need to mount somewhere in our site layout this Routing component:
+**3.** Then, we need to mount our Routing component somewhere in our site layout:
 ```
 <main>
     <Routing />
 </main>
 ```
 
-When we create links, do not use HTML a tag, since it have render problems, use NavLink instead:
-
+**4.** Create navigation links. 
+>  Don't use HTML a tag, since it have render problems. Use NavLink instead:
 ```
 import { NavLink } from "react-router-dom";
 
@@ -291,5 +291,23 @@ function Menu(): JSX.Element {
 export default Menu;
 
 ```
+**5.** Route from code, instead of NavLink:
+> We use useRoute hook to do that:
+```
+import { useNavigate } from "react-router-dom";
 
+function goHome(): JSX.Element {
+    
+    const navigate = useNavigate();
+    
+    function goHome(): void {
+        navigate("/home");
+    }
+
+    return (
+        <button onClick={goHome}>Home</button>
+    );
+}
+
+```
 
