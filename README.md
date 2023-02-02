@@ -280,9 +280,9 @@ root.render(
 ```
 
 **2.** The best practice is to create routing component. It may include:
-    - Custom route, to different part of site/API
-    - Default route - what component should be loaded on default route
-    - Not-existing route - what component should be loaded on not-existing route
+- Custom route, to different part of site/API
+- Default route - what component should be loaded on default route
+- Not-existing route - what component should be loaded on not-existing route
 
 ```
 function Routing(): JSX.Element {
