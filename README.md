@@ -12,7 +12,7 @@ My main goal is to summarize the coding techniques we used to learn in React wit
 2. npm i -g create-react-app  => React global install on PC.
 3. create-react-app my-project-name --template typescript  => Create React project.
 4. npm start  => run React project.
-5. npm i  =>  auto-download all packeges in "dependencies" (while you run prject on new workspace).
+5. npm i  =>  auto-download all packages in "dependencies" (while you run project on new workspace).
 ```
 > Tools.
 ```
@@ -29,22 +29,22 @@ const percent = 10;
 
 ## Conditional rendering
 
-> Show the content on condition. There is 3 main tequniques: 
+> Show the content on condition. There is 3 main techniques: 
 
 1. Interpolation with ternary operator: 
 ```
-{ isWeakend() ? <span>Pizza 🍕 </span> : <span>Cake🎂</span> }
+{ isWeekend() ? <span>Pizza 🍕 </span> : <span>Cake🎂</span> }
 ```
-2. Short Cuit - condition, then logic && or ||, then HTML to render:
+2. Short cuit - condition, then logic && or ||, then HTML to render:
 
 ```
-{ isWeakend() && <span>Pizza 🍕 </span> }
+{ isWeekend() && <span>Pizza 🍕 </span> }
 ```
 3. Condition with other 'return' that return HTML.
 
 
 ```
-if isWeakend() return <span>Today is weekend</span>;
+if isWeekend() return <span>Today is weekend</span>;
 
 return (
     <span>Today is regular day</span>
@@ -113,7 +113,7 @@ function Recommendations(): JSX.Element {
 ```
 ## Media
 
-> Create Assets/Images folder, place the file there. Import it and use it as an "src" in <img> tag:
+> Create Assets/Images folder, place the file there. Import it and use it as an "src" in img tag:
 
 ```
 import imageSource from "../../../Assets/Images/dish.jpg";
@@ -126,3 +126,54 @@ function Dish(): JSX.Element {
     );
 }
 ```
+## Props
+
+> Props can be passed from parent to child element. Child should configure expected props type with 'interface':
+```
+interface SaleProps {
+    discount: number;
+    category: string;
+}
+
+function Sale(props: SaleProps): JSX.Element {
+    return (
+        <div className="Sale Box">
+			<span>{props.discount}% discount on all {props.category}</span>
+        </div>
+    );
+}
+```
+> And the parent pass props to child:
+```
+<Sale discount={10} category="Candies" />
+```
+
+## State and side effect
+- **Hooks** - react system functions - we can't change their names. 
+
+- **Lifecycle Hooks** - those special functions will work only in class component.
+
+- **React Hooks** - those special functions will work only in functional component. 
+
+### useState
+
+State is an special variable. React monitors them, and if their values change, react will re-render the component.
+> When we call to useState react hook - we also have to specify the type of data we want to manage, and the initial value to the state. The function returns array with 2 items:
+1. The first item is actually a state variable.
+2. The second item is an state setter, with that setter we set new values to state (this func is also an trigger to render page)
+
+```
+    const sellerNameArr = useState<string>("");
+    const sellerName = sellerNameArr[0]; // First item in the array is the state variable we need.
+    const setSellerName = sellerNameArr[1]; // Second item in the array is a function for changing the variable.
+```
+3. There is also short syntax to assign the state and setter func to variables - using Array Destructuring Assignment:
+```
+const [num, setNum] = useState<number>(0);
+```
+4. We also can use our custom created type:
+```
+const [product, setProduct] = useState<ProductModel>();
+```
+
+### useEffect
