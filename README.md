@@ -53,6 +53,7 @@ return (
 
 ## Displaying lists
 
+> Popular method to renders lists is map method: 
 ```
 import "./Desserts.css";
 
@@ -67,12 +68,51 @@ function Desserts(): JSX.Element {
 
     return (
         <div className="Desserts">
-		{items.map(item => <span key={item.id}>{item.name} 🍧 </span>)}
+		    {items.map(item => <span key={item.id}>{item.name} 🍧 </span>)}
         </div>
     );
 }
 
 export default Desserts;
+```
+
+## Events
+
+We can trigger functions from page events. Triggered function can be without args, with SyntheticEvent, or with customs args:
+
+```
+function Recommendations(): JSX.Element {
+
+    // No arguments:
+    function first(): void {
+        notifyService.success("Irish Coffee");
+    }
+
+    // SyntheticEvent argument (or derivation):
+    function second(args: SyntheticEvent): void {
+        console.log(args);
+        notifyService.success("Yogurt Ice Cream");
+    }
+
+    // Getting my own arguments:
+    function third(item: string, price: number): void {
+        notifyService.success("Item: " + item + ", price: " + price);
+    }
+
+    return (
+        <div className="Recommendations Box">
+
+            <span>Recommendations: </span>
+
+			<button onClick={first}>First</button>
+
+			<button onClick={second}>Second</button>
+
+			<button onClick={() => third("Apple Pie", 12)}>Third</button>
+
+        </div>
+    );
+}
 ```
 
 
