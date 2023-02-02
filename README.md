@@ -29,11 +29,52 @@ const percent = 10;
 
 ## Conditional rendering
 
-> Show the content on specific condition.
+> Show the content on condition. The is 3 main tequniques: 
 
-Interpolation with ternary operator: 
+1. Interpolation with ternary operator: 
 ```
-{isWeakend() ? <span>Pizza 🍕 </span> : <span>Cake🎂</span>}
+{ isWeakend() ? <span>Pizza 🍕 </span> : <span>Cake🎂</span> }
+```
+2. Short Cuit - condition, then logic && or ||, then HTML to render:
+
+```
+{ isWeakend() && <span>Pizza 🍕 </span> }
+```
+3. Condition with other 'return' that return HTML.
+
+
+```
+if isWeakend() return <span>Today is weekend</span>;
+
+return (
+    <span>Today is regular day</span>
+);
+```
+
+## Displaying lists
+
+```
+import "./Desserts.css";
+
+function Desserts(): JSX.Element {
+
+    const items = [ // Demo for getting the desserts from backend.
+        { id: 1, name: "Apple Pie"},
+        { id: 2, name: "Ice Cream"},
+        { id: 3, name: "Pavlova"},
+        { id: 4, name: "Eclair"}
+    ];
+
+    return (
+        <div className="Desserts">
+            
+			{items.map(item => <span key={item.id}>{item.name} 🍧 </span>)}
+
+        </div>
+    );
+}
+
+export default Desserts;
 ```
 
 

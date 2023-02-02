@@ -1,0 +1,8 @@
+.Sale {
+    background-color: green;
+}
+
+.Sale > span {
+	color: white;
+    font-weight: bold;
+}
