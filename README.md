@@ -6,13 +6,17 @@ My main goal is to summarize the coding techniques we used to learn in React wit
 
 ## Installations
 
-> React init.
+> React install, project install (ts template), run.
 ```
 1. NodeJs install.
 2. npm i -g create-react-app  => React global install on PC.
 3. create-react-app my-project-name --template typescript  => Create React project.
 4. npm start  => run React project.
 5. npm i  =>  auto-download all packeges in "dependencies" (while you run prject on new workspace).
+```
+> Tools.
+```
+1. npm i -g react-cli-snippets  => tool to create react components, by Assaf Finkelshtein.
 ```
 
 ## Interpolation
