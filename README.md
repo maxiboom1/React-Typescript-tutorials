@@ -1,8 +1,8 @@
 # React-Typescript-tutorials
 
-## Concepts
+## What is this page about
 
-My main goal is to summarize the coding techniques we used to do in React with Typescript.
+My main goal is to summarize the coding techniques we used to learn in React with Typescript, and provide simple example to each one. This is not about theory. I hope that this cheat sheet will help students not to drown at the start in interfaces, models, classes, react hooks itc... This specific material are based on React course in John Bryce, 2023.  
 
 ## Interpolation
 
