@@ -1,11 +1,18 @@
 # React-Typescript-tutorials
 
-## Table of content
 ## Table of Contents
   1. [Installations](#Installations)
   2. [Interpolation](#Interpolation)
   3. [Conditional rendering](#Conditional_rendering)
   4. [Displaying lists](#Displaying_lists)
+  5. [Events](#Events)
+  6. [Media](#Media)
+  7. [Props](#Props)
+  8. [State and side effect](#State_and_side_effect)
+        - [useState](#useState)
+        - [useEffect](#useEffect)
+  9. [Routing](#Routing)
+
 
 ## What is this page about
 
@@ -155,7 +162,7 @@ function Sale(props: SaleProps): JSX.Element {
 <Sale discount={10} category="Candies" />
 ```
 
-## State and side effect
+## State_and_side_effect
 
 
 - **Hooks** - react system functions - we can't change their names. 
