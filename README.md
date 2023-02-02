@@ -29,7 +29,7 @@ const percent = 10;
 
 ## Conditional rendering
 
-> Show the content on condition. The is 3 main tequniques: 
+> Show the content on condition. There is 3 main tequniques: 
 
 1. Interpolation with ternary operator: 
 ```
@@ -111,5 +111,18 @@ function Recommendations(): JSX.Element {
     );
 }
 ```
+## Media
 
+> Create Assets/Images folder, place the file there. Import it and use it as an "src" in <img> tag:
 
+```
+import imageSource from "../../../Assets/Images/dish.jpg";
+
+function Dish(): JSX.Element {
+    return (
+        <div className="Dish">
+            <img src={imageSource} />
+        </div>
+    );
+}
+```
