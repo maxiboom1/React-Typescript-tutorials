@@ -67,9 +67,7 @@ function Desserts(): JSX.Element {
 
     return (
         <div className="Desserts">
-            
 			{items.map(item => <span key={item.id}>{item.name} 🍧 </span>)}
-
         </div>
     );
 }
