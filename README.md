@@ -40,6 +40,8 @@ My main goal is to summarize the coding techniques we used to learn in React wit
 const percent = 10;
 <span>Only today - {percent}% off on all store shoes!</span>
 ```
+**[⬆ back to top](#table-of-contents)**
+
 
 ## Conditional_rendering
 
@@ -64,6 +66,8 @@ return (
     <span>Today is regular day</span>
 );
 ```
+**[⬆ back to top](#table-of-contents)**
+
 
 ## Displaying_lists
 
@@ -89,6 +93,8 @@ function Desserts(): JSX.Element {
 
 export default Desserts;
 ```
+**[⬆ back to top](#table-of-contents)**
+
 
 ## Events
 
@@ -125,6 +131,10 @@ function Recommendations(): JSX.Element {
     );
 }
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+
 ## Media
 
 > Create Assets/Images folder, place the file there. Import it and use it as an "src" in img tag:
@@ -140,6 +150,11 @@ function Dish(): JSX.Element {
     );
 }
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+
+
 ## Props
 
 > Props can be passed from parent to child element. Child should configure expected props type with 'interface':
@@ -161,6 +176,10 @@ function Sale(props: SaleProps): JSX.Element {
 ```
 <Sale discount={10} category="Candies" />
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+
 
 ## State_and_side_effect
 
@@ -191,6 +210,8 @@ const [num, setNum] = useState<number>(0);
 ```
 const [product, setProduct] = useState<ProductModel>();
 ```
+**[⬆ back to top](#table-of-contents)**
+
 
 ### useEffect
 
@@ -233,6 +254,8 @@ useEffect(()=>{
     }
 },[a, b, c]);
 ```
+**[⬆ back to top](#table-of-contents)**
+
 
 
 ## Routing
@@ -325,3 +348,4 @@ function goHome(): JSX.Element {
 
 ```
 
+**[⬆ back to top](#table-of-contents)**
