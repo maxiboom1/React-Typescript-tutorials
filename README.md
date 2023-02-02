@@ -149,6 +149,8 @@ function Sale(props: SaleProps): JSX.Element {
 ```
 
 ## State and side effect
+
+
 - **Hooks** - react system functions - we can't change their names. 
 
 - **Lifecycle Hooks** - those special functions will work only in class component.
@@ -177,3 +179,46 @@ const [product, setProduct] = useState<ProductModel>();
 ```
 
 ### useEffect
+
+- **Side-Effect** - A React side-effect occurs when we use something that is outside the scope of React.js in our React components e.g. the Browser APIs like localStorage, AJAX calls, accessing browser Window object etc. We cant perform actions with side effect in our functional component! This will cause infinite loop. For those cases, we have useEffect rect hook.
+
+> useEffect used to perform side-effect functionality in fc. There is 3 timing setups we can use:
+
+1. Using this config, the function will run once on component build:
+```
+useEffect(()=>{
+    // ...
+},[]);
+``` 
+2. Using this config it will run each time one of variables in array will change:
+```
+let a={}, b={}, c={};
+
+useEffect(()=>{
+    // ...
+},[a, b, c]);
+``` 
+3. Using this config, the the code in 'return' will be executed on component destroy:
+```
+useEffect(()=>{
+    return() =>{
+        // ...
+    }
+},[]);
+
+```
+4. You can mix them together in one useEffect func:
+
+```
+let a={}, b={}, c={};
+
+useEffect(()=>{
+    // Code to run once on load
+    return()=>{
+        // Code to run on destroy
+    }
+},[a, b, c]);
+```
+
+
+## Routing
