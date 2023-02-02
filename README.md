@@ -222,3 +222,74 @@ useEffect(()=>{
 
 
 ## Routing
+### Install
+```
+npm i react-router-dom @types/react-router-dom
+```
+Now, the first step is to wrap our App with BrowserRouter tag:
+
+```
+import { BrowserRouter } from 'react-router-dom';
+
+root.render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+);
+```
+
+The best practice is to create routing component. It may include:
+- Custom route, to different part of site/API
+- Default route - what component should be loaded on default route
+- Not-existing route - what component should be loaded on not-existing route
+
+```
+function Routing(): JSX.Element {
+    return (
+
+        <Routes>
+
+            {/* Some Route: */}
+            <Route path="/about" element={<About />} />
+
+            {/* Default Route: */}
+            <Route path="/" element={<Navigate to="/home" />} />
+
+            {/* Page not found: */}
+            <Route path="*" element={<PageNotFound />} />
+
+        </Routes>
+
+    );
+}
+
+export default Routing;
+```
+
+Then, we need to mount somewhere in our site layout this Routing component:
+```
+<main>
+    <Routing />
+</main>
+```
+
+When we create links, do not use HTML a tag, since it have render problems, use NavLink instead:
+
+```
+import { NavLink } from "react-router-dom";
+
+function Menu(): JSX.Element {
+    return (
+        <div className="Menu">
+            <NavLink to="/home">Home</NavLink>
+            <NavLink to="/products">Products</NavLink>
+            <NavLink to="/about">About</NavLink>
+        </div>
+    );
+}
+
+export default Menu;
+
+```
+
+
