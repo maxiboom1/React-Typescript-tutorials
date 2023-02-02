@@ -85,24 +85,21 @@ function Recommendations(): JSX.Element {
 
     // No arguments:
     function first(): void {
-        notifyService.success("Irish Coffee");
+        console.log('click on btn');
     }
 
     // SyntheticEvent argument (or derivation):
     function second(args: SyntheticEvent): void {
         console.log(args);
-        notifyService.success("Yogurt Ice Cream");
     }
 
     // Getting my own arguments:
     function third(item: string, price: number): void {
-        notifyService.success("Item: " + item + ", price: " + price);
+        console.log(item, price);
     }
 
     return (
         <div className="Recommendations Box">
-
-            <span>Recommendations: </span>
 
 			<button onClick={first}>First</button>
 
