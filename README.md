@@ -1,5 +1,12 @@
 # React-Typescript-tutorials
 
+## Table of content
+## Table of Contents
+  1. [Installations](#Installations)
+  2. [Interpolation](#Interpolation)
+  3. [Conditional rendering](#Conditional_rendering)
+  4. [Displaying lists](#Displaying_lists)
+
 ## What is this page about
 
 My main goal is to summarize the coding techniques we used to learn in React with Typescript, and provide simple example to each one. This is not about theory. I hope that this cheat sheet will help students not to drown at the start in interfaces, models, classes, react hooks itc... This specific material are based on React course in John Bryce, 2023.  
@@ -27,7 +34,7 @@ const percent = 10;
 <span>Only today - {percent}% off on all store shoes!</span>
 ```
 
-## Conditional rendering
+## Conditional_rendering
 
 > Show the content on condition. There is 3 main techniques: 
 
@@ -51,7 +58,7 @@ return (
 );
 ```
 
-## Displaying lists
+## Displaying_lists
 
 > Popular method to renders lists is map method: 
 ```
