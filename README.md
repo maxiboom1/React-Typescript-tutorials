@@ -192,7 +192,7 @@ function Sale(props: SaleProps): JSX.Element {
 
 - **Lifecycle Hooks** - those special functions will work only in class component.
 
-- **React Hooks** - those special functions will work only in functional component. 
+- **React Hooks** - those special functions will work only in functional component. They starts with keyword "use". Since we prefer to use FC, we focus on them.
 
 ### useState
 
