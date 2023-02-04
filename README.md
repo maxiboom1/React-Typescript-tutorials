@@ -228,7 +228,7 @@ const [product, setProduct] = useState<ProductModel>();
 1. Using this config, the function will run once on component build:
 ```
 useEffect(()=>{
-    // ...
+    // Component build will trigger this code
 },[]);
 ``` 
 2. Using this config it will run each time one of variables in array will change:
@@ -236,14 +236,14 @@ useEffect(()=>{
 let a={}, b={}, c={};
 
 useEffect(()=>{
-    // ...
+    // Any change in a, b, c will trigger this code
 },[a, b, c]);
 ``` 
 3. Using this config, the the code in 'return' will be executed on component destroy:
 ```
 useEffect(()=>{
     return() =>{
-        // ...
+        // Component destroy will trigger this code
     }
 },[]);
 
