@@ -18,7 +18,8 @@
   13. [Json Web Token - JWT](#Json-Web-Token)
   14. [Error Handling](#Error-handling)
   Appendices:
-  15. [Project Files Structure](#)
+  15. [Project Files Structure](#project-file-structure)
+  16. [Material UI](#material-ui)
 
 
 
@@ -888,7 +889,7 @@ Popular styling library with styled elements.
 
 Available as component-based library, for React use. Official site: https://mui.com
 
-### Install
+### **Install**
 > npm i @mui/material @emotion/react @emotion/styled
 
 It has also nice icon collections:
@@ -955,3 +956,5 @@ Thank you!
 Feel free to contact me if you have any questions :)
 
 Alex, 2023.
+
+**[⬆ back to top](#table-of-contents)**
