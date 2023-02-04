@@ -13,6 +13,7 @@
         - [useEffect](#useEffect)
   9. [Routing](#Routing)
   10. [Ajax, Services, Models, AppConfig](#Ajax-Services-Models-AppConfig) 
+  11. [Form handling](#Form-handling)
 
 
 ## What is this?
