@@ -18,8 +18,8 @@
   13. [Json Web Token - JWT](#Json-Web-Token)
   14. [Error Handling](#Error-handling)
   
-  Appendices:
-  
+  **Appendices:**
+
   15. [Project Files Structure](#project-file-structure)
   16. [Material UI](#material-ui)
 
