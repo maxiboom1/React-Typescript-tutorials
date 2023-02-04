@@ -531,6 +531,6 @@ Those are the possible interactions with Redux:
 - dispatch - add/update/delete data from global state object
 - subscribe - user can get triggers on state change.
 
-[alt text](screenshots/Redux.JPG)
+![alt text](screenshots/Redux.JPG)
 
 **[⬆ back to top](#table-of-contents)**
