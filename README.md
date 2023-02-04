@@ -409,7 +409,7 @@ Class that describes pure data type of the returned object. For example employee
 Example Model:
 ```
 class CredentialsModel {
-    public username: string; // username AND NOT userName
+    public username: string;
     public password: string;
 }
 
