@@ -524,7 +524,7 @@ Every component in our application can access it, and perform CRUD actions. In a
 > npm i redux
 
 
-### **Concept**
+### **Redux terminology**
 
 Those are the possible interactions with Redux:
 - getState - get data from global state object (read)
@@ -532,5 +532,86 @@ Those are the possible interactions with Redux:
 - subscribe - user can get triggers on state change.
 
 ![alt text](screenshots/Redux.JPG)
+
+### Redux setup
+
+
+1. AppState - global state, available in global application scope. Configured in class. For example, products array will be described in ProductState class:
+```
+// 1. Products State - The application level state regarding products: 
+export class ProductsState {
+    public products: ProductModel[] = []; // ProductModel is an model that describes the product object
+}
+```
+2. ActionType - describes the actions we can perform on our AppState. We build the action list in enum.
+```
+// 2. Products Action Type - Which actions we can perform on our products global state
+export enum ProductsActionType {
+    FetchProducts,
+    AddProduct,
+    UpdateProduct,
+    DeleteProduct
+}
+```
+3. Action - interface that describes object to perform one action on AppState. This object contains 'type' - what operation is requested, and the 'payload' - what data should be assigned to this type of operation:
+```
+// 3. Products Action - Interface describing an object for performing one action on our products global state:
+export interface ProductsAction {
+    type: ProductsActionType; // Which operation we're going to perform.
+    payload: any; // What is the data related to that operation.
+}
+```
+4. Reducer - the main function that perform actions on data and includes the logics. When we perform dispatch action (like update), we send action object (with type and payload), and its automatically passed to Reducer function. We never call the Reducer function directly, redux call automatically it when we do dispatch actions. Redux pass to Reducer function 2 arguments: 
+
+- (a) The current AppState object
+- (b) The Action object that we send in dispatch (action object includes type and payload)
+
+Reducer function can't change the received state. So, we must copy received state, do needed action on copied object, and return the modified copy.
+
+```
+// 4. Products Reducer - The main function performing the needed action.
+export function productsReducer(currentState = new ProductsState(), action: ProductsAction): ProductsState {
+
+    // Duplicate current state into a new state:
+    const newState = { ...currentState };
+
+    // Perform the needed action on the newState:
+    switch (action.type) {
+
+        case ProductsActionType.FetchProducts: // Here, the payload is all products for saving
+            newState.products = action.payload;
+            break;
+
+        case ProductsActionType.AddProduct: // Here, the payload is a product object for adding
+            newState.products.push(action.payload);
+            break;
+
+        case ProductsActionType.UpdateProduct: // Here, the payload is a product object for updating
+            const indexToUpdate = newState.products.findIndex(p => p.id === action.payload.id);
+            if (indexToUpdate >= 0) {
+                newState.products[indexToUpdate] = action.payload;
+            }
+            break;
+
+        case ProductsActionType.DeleteProduct: // Here, the payload is the product id for deleting
+            const indexToDelete = newState.products.findIndex(p => p.id === action.payload)
+            if (indexToDelete >= 0) {
+                newState.products.splice(indexToDelete, 1);
+            }
+            break;
+    }
+
+    // Return the newState: 
+    return newState;
+}
+```
+5. Store - Create the store object and start redux mechanism - we pass the reducer as an argument.
+
+```
+// 5. Products Store - The manager object handling redux:
+export const productsStore = createStore(productsReducer);
+
+```
+
 
 **[⬆ back to top](#table-of-contents)**
