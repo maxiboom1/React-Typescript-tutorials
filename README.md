@@ -3,12 +3,12 @@
 ## Table of Contents
   1. [Installations](#Installations)
   2. [Interpolation](#Interpolation)
-  3. [Conditional rendering](#Conditional_rendering)
-  4. [Displaying lists](#Displaying_lists)
+  3. [Conditional rendering](#Conditional-rendering)
+  4. [Displaying lists](#Displaying-lists)
   5. [Events](#Events)
   6. [Media](#Media)
   7. [Props](#Props)
-  8. [State and side effect](#State_and_side_effect)
+  8. [State and side effect](#State-and-side-effect)
         - [useState](#useState)
         - [useEffect](#useEffect)
   9. [Routing](#Routing)
@@ -48,7 +48,7 @@ const percent = 10;
 **[⬆ back to top](#table-of-contents)**
 
 
-## Conditional_rendering
+## Conditional rendering
 
 > Show the content on condition. There is 3 main techniques: 
 
@@ -74,7 +74,7 @@ return (
 **[⬆ back to top](#table-of-contents)**
 
 
-## Displaying_lists
+## Displaying lists
 
 > Popular method to renders lists is map method: 
 ```
@@ -186,7 +186,7 @@ function Sale(props: SaleProps): JSX.Element {
 
 
 
-## State_and_side_effect
+## State and side effect
 
 
 - **Hooks** - react system functions - we can't change their names. 
