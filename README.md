@@ -21,7 +21,7 @@ My main goal is to summarize the coding techniques we used to learn in React wit
 
 This is not about theory. 
 
-I hope that this cheat sheet will help students not to drown at the start in interfaces, models, classes, react hooks itc... This specific material are based on React course in John Bryce, 2023 by lecturer Assaf Finkelshtein.  
+I hope that this cheat sheet will help students not to drown at the start in interfaces, models, classes, React hooks itc... This specific material are based on React course in John Bryce, 2023 by lecturer Assaf Finkelshtein.  
 
 ## Installations
 
@@ -35,7 +35,7 @@ I hope that this cheat sheet will help students not to drown at the start in int
 ```
 > Tools.
 ```
-1. npm i -g react-cli-snippets  => tool to create react components, by Assaf Finkelshtein.
+1. npm i -g react-cli-snippets  => tool to create React components, by Assaf Finkelshtein.
 ```
 
 ## Interpolation
@@ -189,7 +189,7 @@ function Sale(props: SaleProps): JSX.Element {
 ## State and side effect
 
 
-- **Hooks** - react system functions - we can't change their names. 
+- **Hooks** - React system functions - we can't change their names. 
 
 - **Lifecycle Hooks** - those special functions will work only in class component.
 
@@ -197,8 +197,8 @@ function Sale(props: SaleProps): JSX.Element {
 
 ### useState
 
-State is an special variable. React monitors them, and if their values change, react will re-render the component.
-> When we call to useState react hook - we also have to specify the type of data we want to manage, and the initial value to the state. The function returns array with 2 items:
+State is an special variable. React monitors them, and if their values change, React will re-render the component.
+> When we call to useState React hook - we also have to specify the type of data we want to manage, and the initial value to the state. The function returns array with 2 items:
 1. The first item is actually a state variable.
 2. The second item is an state setter, with that setter we set new values to state (this func is also an trigger to render page)
 
@@ -372,12 +372,9 @@ const passedParameter = params.prodId; // will contain the passed value.
 
 ## Ajax, Services, Models, AppConfig 
 
-### **Install**
-> npm i axios
-
 ### **Concept**
 
-The most standard task in  modern web application is sending HTTP request to external API.
+The most standard task in  modern web application is sending HTTP request to external API. In React, we use axios library to perform the requests.
 
 When we perform such request, the best practice to do is:
 
@@ -385,6 +382,9 @@ When we perform such request, the best practice to do is:
 2. Create model class to describe returned data.
 3. Create service class, who actually will perform axios requests.
 4. Create component to render the returned data.
+
+### **Install**
+> npm i axios
 
 ### **AppConfig**
 
@@ -450,4 +450,66 @@ export default productsService;
 
 ```
 **[⬆ back to top](#table-of-contents)**
+
+## Form handling
+
+Its very easy to work with form in React using useForm React hook.
+
+### **Install**
+> npm i react-hook-form
+
+This library contains 3 main elements:
+
+- Register function - we use it inline in the input HTML tag to get parameter that matched the parameter from model.
+- handleSubmit function - uses to bridge submit event with our custom handler function(who gets data from the form).
+- setValue function - used to set initial values to form fields.
+
+
+> When we mess with file uploads, we need to convert its data type, since in browser we get file collection and not single file.
+
+Example:
+```
+import { useForm } from "react-hook-form";
+import ProductModel from "../../../Models/ProductModel";
+
+function AddProduct(): JSX.Element {
+
+    const { register, handleSubmit } = useForm<ProductModel>();
+
+    const navigate = useNavigate();
+
+    async function send(product: ProductModel) {
+        
+        // Convert image type to "File" type (that are configured like this in model)
+        product.image = (product.image as unknown as FileList)[0];
+        
+        // axios action to external API... 
+    }
+
+    return (
+        <div className="AddProduct Box">
+            <!-- handleSubmit will send the data from the form to 'send' function -->
+            <form onSubmit={handleSubmit(send)}> 
+
+                <label>Name:</label>
+                <input type="text" {...register("name")} required minLength={2} maxLength={100} />
+
+                <label>Price:</label>
+                <input type="number" {...register("price")} required min={0} max={1000} />
+
+                <label>Image: </label>
+                <input type="file" accept="image/*" {...register("image")} />
+
+                <button>Add</button>
+
+            </form>
+
+        </div>
+    );
+}
+
+export default AddProduct;
+
+```
+
 
