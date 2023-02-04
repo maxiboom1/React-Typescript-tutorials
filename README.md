@@ -16,6 +16,10 @@
   11. [Form handling](#Form-handling)
   12. [Redux](#Redux)
   13. [Json Web Token - JWT](#Json-Web-Token)
+  14. [Error Handling](#Error-handling)
+  Appendices:
+  15. [Project Files Structure](#)
+
 
 
 ## **What is this?**
@@ -788,3 +792,166 @@ console.log(decoded);
 Since we want to include token with every AJAX request to server, we will use interceptor. Interceptor example can be found in axios [section](#Interceptor) 
 
 **[⬆ back to top](#table-of-contents)**
+
+## Error handling
+
+In general, don't show user internal or technic errors, like: "Request failed with status code 404". 
+
+Instead, you should print to user something like "Incorrect username or password".
+
+These error messages are returned from the server, but hidden by axios, so we need to fetch it from axios.response
+
+Also, don't use alerts. The are old-fashioned, and process breakers. Also, you can't style them. 
+
+The is many libraries to show notification - for example notyf.
+
+### **Install**
+```
+npm i notyf
+```
+
+Here is an example of how to build NotifyService - it is good reference to how it should look like:
+
+```
+import { Notyf } from "notyf";
+
+class NotifyService {
+
+    private notyf = new Notyf({
+        duration: 3000,
+        position: { x: "center", y: "top" }
+    });
+
+    public success(message: string): void {
+        this.notyf.success(message);
+    }
+
+    public error(err: any): void {
+        const message = this.extractErrorMessage(err);
+        this.notyf.error(message);
+    }
+
+    private extractErrorMessage(err: any): string {
+
+        // If error is the message string: 
+        if (typeof err === "string") return err;
+
+        // If error thrown by axios:
+        if (err.response?.data) return err.response.data;
+
+        // Unknown error (JIC = Just in Case)
+        return "Some error, please try again";
+    }
+
+}
+
+const notifyService = new NotifyService();
+
+export default notifyService;
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+-------------------------------------------------------------------------------------
+## *Appendices*
+
+## **Project file structure**
+
+First of all, React uses PascalCase for classes and its filenames. Don't break this convention.
+Good practice would be build your project src. folder with logic similar to this:
+
+1. Assets - for media, images etc
+2. Components, including:
+    - LayoutArea - Layout, Routing, and Layout members should be here
+    - SharedArea - Incudes shared components, for example spinner component
+    - Rest of layer components like AboutArea, HomeArea, AuthArea, ProductsArea...
+3. Models - includes model classes we use in our project
+4. Redux - includes redux setup files as describes [here](#redux).
+5. Services with app services - for example AuthService, InterceptorService, NotifyService etc...
+6. Utils - with AppConfig file.
+
+
+Of course, all of these are only recommendations for best practices. Technically, you can combine all that code to one file and it will work. But, we don't sure if you will able to work with it :)
+
+This repository includes react project that demonstarate all the stuff we covered here. It works with local web server API called northwind. If you plan to play with that project, you should  clone that repo, npm i it, and install nortwind:
+
+> npm i -g northwind-back-end
+
+Then, just start the server with command 'northwind'.
+
+**[⬆ back to top](#table-of-contents)**
+
+
+## **Material UI**
+
+Popular styling library with styled elements.
+
+Available as component-based library, for React use. Official site: https://mui.com
+
+### Install
+> npm i @mui/material @emotion/react @emotion/styled
+
+It has also nice icon collections:
+
+> npm i @mui/icons-material
+
+Just go here https://mui.com/material-ui/material-icons/ ,select the icon you need, copy the import path and use it in your component.
+
+Here is an example of "contact us" page from our project, that uses it:
+
+```
+
+import { Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import TextField from "@mui/material/TextField";
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import SendIcon from '@mui/icons-material/Send';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import "./ContactUs.css";
+
+function ContactUs(): JSX.Element {
+    return (
+        <div className="ContactUs Box">
+
+            <Typography variant="h3">
+                <ContactMailIcon fontSize="large" />
+                &nbsp;
+                Contact Us
+            </Typography>
+
+            <form>
+
+                <TextField label="Full name:" variant="outlined" className="InputBox" />
+
+                <TextField label="Email:" variant="outlined" type="email" className="InputBox" />
+
+                <TextField label="Message:" variant="outlined" className="InputBox" />
+
+                <div className="Left">
+                    <FormControlLabel label="Send me promotional emails" control={<Checkbox />} />
+                </div>
+
+                <ButtonGroup fullWidth variant="contained">
+                    <Button color="primary">Send &nbsp; <SendIcon /> </Button>
+                    <Button color="secondary" type="reset">Clear &nbsp; <HighlightOffIcon /> </Button>
+                </ButtonGroup>
+
+            </form>
+
+        </div>
+    );
+}
+
+export default ContactUs;
+
+
+```
+
+Thank you! 
+
+Feel free to contact me if you have any questions :)
+
+Alex, 2023.
