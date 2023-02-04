@@ -476,8 +476,6 @@ function AddProduct(): JSX.Element {
 
     const { register, handleSubmit } = useForm<ProductModel>();
 
-    const navigate = useNavigate();
-
     async function send(product: ProductModel) {
         
         // Convert image type to "File" type (that are configured like this in model)
