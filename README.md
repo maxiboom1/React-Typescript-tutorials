@@ -17,7 +17,7 @@
   12. [Redux](#Redux)
 
 
-## What is this?
+## **What is this?**
 
 My main goal is to summarize the coding techniques we used to learn in React with Typescript, and provide simple example to each one. 
 
@@ -25,7 +25,7 @@ This is not about theory.
 
 I hope that this cheat sheet will help students not to drown at the start in interfaces, models, classes, React hooks itc... This specific material are based on React course in John Bryce, 2023 by lecturer Assaf Finkelshtein.  
 
-## Installations
+## **Installations**
 
 > React install, project install (ts template), run.
 ```
@@ -40,7 +40,7 @@ I hope that this cheat sheet will help students not to drown at the start in int
 1. npm i -g react-cli-snippets  => tool to create React components, by Assaf Finkelshtein.
 ```
 
-## Interpolation
+## **Interpolation**
 
 > Wrapping the variables inline.
 ```
@@ -50,20 +50,20 @@ const percent = 10;
 **[⬆ back to top](#table-of-contents)**
 
 
-## Conditional rendering
+## **Conditional rendering**
 
 > Show the content on condition. There is 3 main techniques: 
 
-1. Interpolation with ternary operator: 
+**1.** Interpolation with ternary operator: 
 ```
 { isWeekend() ? <span>Pizza 🍕 </span> : <span>Cake🎂</span> }
 ```
-2. Short cuit - condition, then logic && or ||, then HTML to render:
+**2.** Short cuit - condition, then logic && or ||, then HTML to render:
 
 ```
 { isWeekend() && <span>Pizza 🍕 </span> }
 ```
-3. Condition with other 'return' that return HTML.
+**3.** Condition with other 'return' that return HTML.
 
 
 ```
@@ -76,7 +76,7 @@ return (
 **[⬆ back to top](#table-of-contents)**
 
 
-## Displaying lists
+## **Displaying lists**
 
 > Popular method to renders lists is map method: 
 ```
@@ -103,7 +103,7 @@ export default Desserts;
 **[⬆ back to top](#table-of-contents)**
 
 
-## Events
+## **Events**
 
 We can trigger functions from page events. Triggered function can be without args, with SyntheticEvent, or with customs args:
 
@@ -142,7 +142,7 @@ function Recommendations(): JSX.Element {
 **[⬆ back to top](#table-of-contents)**
 
 
-## Media
+## **Media**
 
 > Create Assets/Images folder, place the file there. Import it and use it as an "src" in img tag:
 
@@ -162,7 +162,7 @@ function Dish(): JSX.Element {
 
 
 
-## Props
+## **Props**
 
 > Props can be passed from parent to child element. Child should configure expected props type with 'interface':
 ```
@@ -188,7 +188,7 @@ function Sale(props: SaleProps): JSX.Element {
 
 
 
-## State and side effect
+## **State and side effect**
 
 
 - **Hooks** - React system functions - we can't change their names. 
@@ -197,23 +197,23 @@ function Sale(props: SaleProps): JSX.Element {
 
 - **React Hooks** - those special functions will work only in functional component. They starts with keyword "use". Since we prefer to use FC, we focus on them.
 
-### useState
+### **useState**
 
 State is an special variable. React monitors them, and if their values change, React will re-render the component.
 > When we call to useState React hook - we also have to specify the type of data we want to manage, and the initial value to the state. The function returns array with 2 items:
-1. The first item is actually a state variable.
-2. The second item is an state setter, with that setter we set new values to state (this func is also an trigger to render page)
+**1.** The first item is actually a state variable.
+**2.** The second item is an state setter, with that setter we set new values to state (this func is also an trigger to render page)
 
 ```
     const sellerNameArr = useState<string>("");
     const sellerName = sellerNameArr[0]; // First item in the array is the state variable we need.
     const setSellerName = sellerNameArr[1]; // Second item in the array is a function for changing the variable.
 ```
-3. There is also short syntax to assign the state and setter func to variables - using Array Destructuring Assignment:
+**3.** There is also short syntax to assign the state and setter func to variables - using Array Destructuring Assignment:
 ```
 const [num, setNum] = useState<number>(0);
 ```
-4. We also can use our custom created type:
+**4.** We also can use our custom created type:
 ```
 const [product, setProduct] = useState<ProductModel>();
 ```
@@ -226,13 +226,13 @@ const [product, setProduct] = useState<ProductModel>();
 
 > useEffect used to perform side-effect functionality in fc. There is 3 timing setups we can use:
 
-1. Using this config, the function will run once on component build:
+**1.** Using this config, the function will run once on component build:
 ```
 useEffect(()=>{
     // Component build will trigger this code
 },[]);
 ``` 
-2. Using this config it will run each time one of variables in array will change:
+**2.** Using this config it will run each time one of variables in array will change:
 ```
 let a={}, b={}, c={};
 
@@ -240,7 +240,7 @@ useEffect(()=>{
     // Any change in a, b, c will trigger this code
 },[a, b, c]);
 ``` 
-3. Using this config, the the code in 'return' will be executed on component destroy:
+**3.** Using this config, the the code in 'return' will be executed on component destroy:
 ```
 useEffect(()=>{
     return() =>{
@@ -249,7 +249,7 @@ useEffect(()=>{
 },[]);
 
 ```
-4. You can mix them together in one useEffect func:
+**4.** You can mix them together in one useEffect func:
 
 ```
 let a={}, b={}, c={};
@@ -265,8 +265,8 @@ useEffect(()=>{
 
 
 
-## Routing
-### Install
+## **Routing**
+### **Install**
 ```
 npm i react-router-dom @types/react-router-dom
 ```
@@ -372,7 +372,7 @@ const passedParameter = params.prodId; // will contain the passed value.
 
 **[⬆ back to top](#table-of-contents)**
 
-## Ajax, Services, Models, AppConfig 
+## **Ajax, Services, Models, AppConfig** 
 
 ### **Concept**
 
@@ -453,7 +453,7 @@ export default productsService;
 ```
 **[⬆ back to top](#table-of-contents)**
 
-## Form handling
+## **Form handling**
 
 Its very easy to work with form in React using useForm React hook.
 
@@ -533,7 +533,7 @@ Those are the possible interactions with Redux:
 
 ![alt text](screenshots/Redux.JPG)
 
-### Redux setup
+### **Redux setup**
 
 
 **1.** AppState - global state, available in global application scope. Configured in class. For example, products array will be described in ProductState class:
