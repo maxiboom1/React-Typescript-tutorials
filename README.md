@@ -353,3 +353,87 @@ function goHome(): JSX.Element {
 ```
 
 **[⬆ back to top](#table-of-contents)**
+
+## Ajax, Services, Models, AppConfig 
+
+### **Install**
+> npm i axios
+
+### **Concept**
+
+The most standard task in  modern web application is sending HTTP request to external API.
+
+When we perform such request, the best practice to do is:
+
+1. Create global 'AppConfig' and write the API URL there.
+2. Create model class to describe returned data.
+3. Create service class, who actually will perform axios requests.
+4. Create component to render the returned data.
+
+### **AppConfig**
+
+Class that contains common configuration to our application, for example the URL of the necessary resources. It should be in global scope, and can be accessed from anywhere in our app. Usually we will export instance of this class (its called "singleton"). For example:
+
+```
+class AppConfig {
+    public registerUrl = "http://localhost:3030/api/auth/register/";
+    public loginUrl = "http://localhost:3030/api/auth/login/";  
+}
+
+const appConfig = new AppConfig(); // Singleton
+export default appConfig;
+```
+
+### **Model**
+
+Class that describes pure data type of the returned object. For example employee obj, or product obj... To configure class variables without initialize, we should add to tsconfig.json this setting:
+> "strictNullChecks": false
+
+Example Model:
+```
+class CredentialsModel {
+    public username: string; // username AND NOT userName
+    public password: string;
+}
+
+export default CredentialsModel;
+```
+
+### **Service**
+
+This component performs only logic, and don't have UI. Usually we perform axios request and handle the response. Example:
+
+```
+import axios from "axios";
+import ProductModel from "../Models/ProductModel";
+import appConfig from "../Utils/AppConfig";
+
+class ProductsService {
+
+    // Get all products: 
+    public async getAllProducts(): Promise<ProductModel[]> {
+
+        // Get from REST API products: 
+        const response = await axios.get<ProductModel[]>(appConfig.productsUrl);
+
+        // Extract products: 
+        products = response.data; // data will be ProductModel[]
+
+        // Update global store: 
+        productsStore.dispatch({ type: ProductsActionType.FetchProducts, payload: products });
+
+        // Return:
+        return products;
+    }
+
+}
+
+const productsService = new ProductsService(); // Singleton
+
+export default productsService;
+
+```
+
+
+
+
