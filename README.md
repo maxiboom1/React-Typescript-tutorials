@@ -12,6 +12,7 @@
         - [useState](#useState)
         - [useEffect](#useEffect)
   9. [Routing](#Routing)
+  10. [Ajax, Services, Models, AppConfig](#Ajax) 
 
 
 ## What is this?
@@ -433,7 +434,5 @@ const productsService = new ProductsService(); // Singleton
 export default productsService;
 
 ```
-
-
-
+**[⬆ back to top](#table-of-contents)**
 
