@@ -353,6 +353,21 @@ function goHome(): JSX.Element {
 
 ```
 
+**6.** Pass parameter in route - Route parameter:
+> We can pass parameters passed in URL and handle it - this is popular technique to pass data.
+
+Configure first the route parameter in route:
+```
+{/* Access to /products/details/value will pass 'value' to the receiver*/}
+<Route path="/products/details/:prodId" element={<ProductDetails />} />
+```
+To get the parameter, use useParams:
+
+```
+const params = useParams();
+const passedParameter = params.prodId; // will contain the passed value. 
+```
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Ajax, Services, Models, AppConfig 
