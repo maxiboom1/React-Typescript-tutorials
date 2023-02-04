@@ -15,6 +15,7 @@
   10. [Ajax, Services, Models, AppConfig](#Ajax-Services-Models-AppConfig) 
   11. [Form handling](#Form-handling)
   12. [Redux](#Redux)
+  13. [Json Web Token - JWT](#Json-Web-Token)
 
 
 ## **What is this?**
@@ -451,6 +452,77 @@ const productsService = new ProductsService(); // Singleton
 export default productsService;
 
 ```
+
+### Interceptor
+
+Interceptor is an special function that triggered on every response or request.
+
+Using interceptors, you can interrupt every response or request, and modify it/ insert some additional data.
+
+To configure interceptor, we usually open file in services folder. 
+
+This example will add authorization header with the token from Redux state:
+
+```
+
+import axios from "axios";
+import { authStore } from "../Redux/AuthState";
+
+class InterceptorService {
+
+    // Create interceptor:
+    public create(): void {
+
+        // Register to any request: 
+        axios.interceptors.request.use(requestObject => {
+
+            // If we have a token: 
+            if(authStore.getState().token) {
+
+                // Add authorization header, containing the token:
+                requestObject.headers = {
+
+                    // The needed header format: 
+                    authorization: "Bearer " + authStore.getState().token // DON'T FORGET THE SPACE AFTER "Bearer "
+                }
+            }
+
+            // Return the updated request object:
+            return requestObject;
+        });
+    }
+}
+
+const interceptorService = new InterceptorService();
+
+export default interceptorService;
+
+```
+To start the interceptors, we have to run it at root level index.ts:
+
+```
+
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import Layout from './Components/LayoutArea/Layout/Layout';
+import { BrowserRouter } from 'react-router-dom';
+import interceptorService from './Services/InterceptorService';
+
+// Create interceptors: 
+interceptorService.create();
+
+const root = ReactDOM.createRoot(
+    document.getElementById('root') as HTMLElement
+);
+root.render(
+    <BrowserRouter>
+        <Layout />
+    </BrowserRouter>
+);
+
+
+```
+
 **[⬆ back to top](#table-of-contents)**
 
 ## **Form handling**
@@ -676,5 +748,43 @@ export function authReducer(currentState = new AuthState(), action: AuthAction):
 export const authStore = createStore(authReducer);
 
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+
+## **Json Web Token**
+
+JSON Web Token is a proposed Internet standard for creating data with optional signature and/or optional encryption whose payload holds JSON that asserts some number of claims. The tokens are signed either using a private secret or a public/private key. 
+
+Once client access backend resource, backend server creates uniq token object with user data, expiration time etc... Once client get his token, he should save it, and send it with every HTTP request as an HTTP header. Its easy to work with JWT using jwt-decode package:
+
+### **Install**
+> npm i jwt-decode
+
+Example:
+```
+import jwt_decode from "jwt-decode";
+ 
+var token = "eyJ0eXAiO.../// jwt token";
+var decoded = jwt_decode(token);
+ 
+console.log(decoded);
+ 
+/* prints:
+ * { foo: "bar",
+ *   exp: 1393286893,
+ *   iat: 1393268893  }
+ */
+ ```
+
+ Example with TS (it's taken from full example of AuthState redux setup):
+
+ ```
+    newState.user = jwtDecode<{ user: UserModel }>(action.payload).user; // Extract user from token.
+ ```
+
+ ### **Interceptors**
+
+Since we want to include token with every AJAX request to server, we will use interceptor. Interceptor example can be found in axios [section](#Interceptor) 
 
 **[⬆ back to top](#table-of-contents)**
