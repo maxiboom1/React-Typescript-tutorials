@@ -14,6 +14,7 @@
   9. [Routing](#Routing)
   10. [Ajax, Services, Models, AppConfig](#Ajax-Services-Models-AppConfig) 
   11. [Form handling](#Form-handling)
+  12. [Redux](#Redux)
 
 
 ## What is this?
@@ -510,5 +511,26 @@ function AddProduct(): JSX.Element {
 export default AddProduct;
 
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+## **Redux**
+
+Redux is an JS library to manage states in global scope.
+
+Every component in our application can access it, and perform CRUD actions. In additional, every component can subscribe to state and get triggers on state changes!
+
+### **Install**
+> npm i redux
+
+
+### **Concept**
+
+Those are the possible interactions with Redux:
+- getState - get data from global state object (read)
+- dispatch - add/update/delete data from global state object
+- subscribe - user can get triggers on state change.
+
+[alt text](screenshots/Redux.JPG)
 
 **[⬆ back to top](#table-of-contents)**
