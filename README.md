@@ -536,14 +536,14 @@ Those are the possible interactions with Redux:
 ### Redux setup
 
 
-1. AppState - global state, available in global application scope. Configured in class. For example, products array will be described in ProductState class:
+**1.** AppState - global state, available in global application scope. Configured in class. For example, products array will be described in ProductState class:
 ```
 // 1. Products State - The application level state regarding products: 
 export class ProductsState {
     public products: ProductModel[] = []; // ProductModel is an model that describes the product object
 }
 ```
-2. ActionType - describes the actions we can perform on our AppState. We build the action list in enum.
+**2.** ActionType - describes the actions we can perform on our AppState. We build the action list in enum.
 ```
 // 2. Products Action Type - Which actions we can perform on our products global state
 export enum ProductsActionType {
@@ -553,7 +553,7 @@ export enum ProductsActionType {
     DeleteProduct
 }
 ```
-3. Action - interface that describes object to perform one action on AppState. This object contains 'type' - what operation is requested, and the 'payload' - what data should be assigned to this type of operation:
+**3.** Action - interface that describes object to perform one action on AppState. This object contains 'type' - what operation is requested, and the 'payload' - what data should be assigned to this type of operation:
 ```
 // 3. Products Action - Interface describing an object for performing one action on our products global state:
 export interface ProductsAction {
@@ -561,7 +561,7 @@ export interface ProductsAction {
     payload: any; // What is the data related to that operation.
 }
 ```
-4. Reducer - the main function that perform actions on data and includes the logics. When we perform dispatch action (like update), we send action object (with type and payload), and its automatically passed to Reducer function. We never call the Reducer function directly, redux call automatically it when we do dispatch actions. Redux pass to Reducer function 2 arguments: 
+**4.** Reducer - the main function that perform actions on data and includes the logics. When we perform dispatch action (like update), we send action object (with type and payload), and its automatically passed to Reducer function. We never call the Reducer function directly, redux call automatically it when we do dispatch actions. Redux pass to Reducer function 2 arguments: 
 
 - (a) The current AppState object
 - (b) The Action object that we send in dispatch (action object includes type and payload)
@@ -605,7 +605,7 @@ export function productsReducer(currentState = new ProductsState(), action: Prod
     return newState;
 }
 ```
-5. Store - Create the store object and start redux mechanism - we pass the reducer as an argument.
+**5.** Store - Create the store object and start redux mechanism - we pass the reducer as an argument.
 
 ```
 // 5. Products Store - The manager object handling redux:
