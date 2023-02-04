@@ -12,7 +12,7 @@
         - [useState](#useState)
         - [useEffect](#useEffect)
   9. [Routing](#Routing)
-  10. [Ajax, Services, Models, AppConfig](#Ajax,_Services,_Models,_AppConfig) 
+  10. [Ajax, Services, Models, AppConfig](#Ajax,-Services,-Models,-AppConfig) 
 
 
 ## What is this?
