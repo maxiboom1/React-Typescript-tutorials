@@ -1007,7 +1007,7 @@ A small app consists of three (3) layers: Router Layer, Service Layer, and Data 
 
 ![alt text](screenshots/layered-architecture1.JPG)
 
-## Create server
+## Create an basic REST API server
 
 1. We will use local json file with superheroes, it will be in src/1-assets/data/superheroes.json:
 
@@ -1206,5 +1206,126 @@ export default {
     updatePartialSuperhero,
     deleteSuperhero
 };
+
+```
+
+5. Create routes in 6-routes/superheroes-routes.ts:
+
+```
+import express, {Request, Response } from "express";
+import SuperheroModel from "../2-models/superhero-model";
+import superheroesService from "../5-services/superheroes-service";
+
+// Create superheroes router:
+const router = express.Router(); // Capital R
+
+// GET http://localhost:4000/api/superheroes
+router.get("/api/superheroes", async (request: Request, response: Response) => {
+
+    // Get all superheroes:
+    const superheroes = await superheroesService.getAllSuperheroes();
+
+    // Response back:
+    response.json(superheroes);
+
+});
+
+// GET http://localhost:4000/api/superheroes/:id
+router.get("/api/superheroes/:id([0-9]+)", async (request: Request, response: Response) => {
+
+    // Extract id from route:
+    const id = +request.params.id;
+
+    // Get that superhero:
+    const superhero = await superheroesService.getOneSuperhero(id);
+
+    // Response back:
+    response.json(superhero);
+
+});
+
+// POST http://localhost:4000/api/superheroes
+router.post("/api/superheroes", async (request: Request, response: Response) => {
+
+    // Get superhero from body:
+    const superhero = new SuperheroModel(request.body); // Literal Object
+
+    // Add it to database:
+    const addedSuperhero = await superheroesService.addSuperhero(superhero);
+
+    // Response back:
+    response.status(201).json(addedSuperhero);
+
+});
+
+// PUT http://localhost:4000/api/superheroes/:id
+router.put("/api/superheroes/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+
+    // Take route id into the body:
+    request.body.id = +request.params.id;
+
+    // Get superhero from body:
+    const superhero = new SuperheroModel(request.body);
+
+    // Update it in database:
+    const updatedSuperhero = await superheroesService.updateFullSuperhero(superhero);
+
+    // Response back:
+    response.json(updatedSuperhero);
+
+});
+
+// PATCH http://localhost:4000/api/superheroes/:id
+router.patch("/api/superheroes/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+
+    // Take route id into the body:
+    request.body.id = +request.params.id;
+
+    // Get superhero from body:
+    const superhero = new SuperheroModel(request.body);
+
+    // Update it in database:
+    const updatedSuperhero = await superheroesService.updatePartialSuperhero(superhero);
+
+    // Response back:
+    response.json(updatedSuperhero);
+
+});
+
+// DELETE http://localhost:4000/api/superheroes/:id
+router.delete("/api/superheroes/:id([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+
+    // Take route id:
+    const id = +request.params.id;
+
+    // Delete that item:
+    await superheroesService.deleteSuperhero(id);
+
+    // Response back:
+    response.sendStatus(204);
+
+});
+
+export default router;
+
+```
+
+6. Finally, setup the server in app.ts:
+
+```
+import express from "express";
+import superheroesRoutes from "./6-routes/superheroes-routes";
+
+// Create one server:
+const server = express();
+
+// Build request.body from given JSON:
+server.use(express.json());
+
+// Combine superheroes routes into our server:
+server.use("/", superheroesRoutes);
+
+// Run server: 
+server.listen(4000, () => console.log("Listening on http://localhost:4000"));
 
 ```
