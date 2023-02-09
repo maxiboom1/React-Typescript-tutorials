@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Spiderman12",
+        "ability": "Stick on walls using spider web"
+    },
+    {
+        "id": 2,
+        "name": "Superman",
+        "ability": "Amazing power, Laser eyes"
+    },
+    {
+        "id": 3,
+        "name": "Batman",
+        "ability": "Very rich and smart"
+    },
+    {
+        "id": 6,
+        "name": "Wonderwomen",
+        "ability": "Amazing strength"
+    },
+    {
+        "id": 7,
+        "name": "Wonderwomen",
+        "ability": "Amazing strength"
+    },
+    {
+        "id": 8,
+        "name": "Wonderwomen",
+        "ability": "Amazing strength"
+    },
+    {
+        "id": 9,
+        "name": "Wonderwomen",
+        "ability": "Amazing strength"
+    }
+]

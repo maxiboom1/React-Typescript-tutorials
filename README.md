@@ -1,7 +1,7 @@
-# Tutorials
 
-## Table of Contents
-  1. [Installations](#Installations)
+# Table of Contents
+## React with Typescript
+  1. [ReactJs Installations](#ReactJs-intallation)
   2. [Interpolation](#Interpolation)
   3. [Conditional rendering](#Conditional-rendering)
   4. [Displaying lists](#Displaying-lists)
@@ -24,16 +24,16 @@
   16. [Material UI](#material-ui)
 
 
-
+## NodeJs
+  1. [NodeJs Installations](#NodeJs-installations)
+  
 ## **What is this?**
 
-My main goal is to summarize the coding techniques we used to learn in React with Typescript, and provide simple example to each one. 
+My main goal is to summarize the coding techniques we used to learn in React with Typescript, NodeJs (with mysql integration) and provide simple example to each one. 
 
-This is not about theory. 
+I hope that this cheat sheet will help students not to drown at the start in complicated stuff of React, NodeJs, mysql etc... This specific material are based on Fullstack course in John Bryce, 2023 by lecturer Assaf Finkelshtein.  
 
-I hope that this cheat sheet will help students not to drown at the start in interfaces, models, classes, React hooks itc... This specific material are based on React course in John Bryce, 2023 by lecturer Assaf Finkelshtein.  
-
-## **Installations**
+## **ReactJs installations**
 
 > React install, project install (ts template), run.
 ```
@@ -960,3 +960,24 @@ Feel free to contact me if you have any questions :)
 Alex, 2023.
 
 **[⬆ back to top](#table-of-contents)**
+
+
+
+# NodeJs
+
+
+## **NodeJs Installations**
+
+> React install, project install (ts template), run.
+```
+1. NodeJs install.
+2. npm i -g create-react-app  => React global install on PC.
+3. create-react-app my-project-name --template typescript  => Create React project.
+4. npm start  => run React project.
+5. npm i  =>  auto-download all packages in "dependencies" (while you run project on new workspace).
+```
+> Tools.
+```
+1. npm i -g react-cli-snippets  => tool to create React components, by Assaf Finkelshtein.
+```
+
