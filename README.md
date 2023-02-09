@@ -1,4 +1,4 @@
-# React-Typescript-tutorials
+# Tutorials
 
 ## Table of Contents
   1. [Installations](#Installations)
