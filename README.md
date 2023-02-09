@@ -968,16 +968,28 @@ Alex, 2023.
 
 ## **NodeJs Installations**
 
-> React install, project install (ts template), run.
+> NodeJs project install:
 ```
-1. NodeJs install.
-2. npm i -g create-react-app  => React global install on PC.
-3. create-react-app my-project-name --template typescript  => Create React project.
-4. npm start  => run React project.
-5. npm i  =>  auto-download all packages in "dependencies" (while you run project on new workspace).
+1. npm init -y  => creates package.json project config file.
+2. npm i -g nodemon => global install of nodemon tool to hot-reloading.
+3. npm i -g ts-node =>  global install of nodejs typescript.
+4. npm i @types/node -D => project install of types for nodejs, we instll it only for devDependencies (-D).
+5. Create tsconfig.json config file with:
+    {
+        "compilerOptions": {
+            "target": "ES6",
+            "esModuleInterop": true,
+            "moduleResolution": "Node",
+        }
+    }
+6. npm i express => express install, library to manage REST API. 
+7. npm i @types/express -D => types for express (with -D)
 ```
-> Tools.
+> Tools that may be usefull:
 ```
-1. npm i -g react-cli-snippets  => tool to create React components, by Assaf Finkelshtein.
+1. npm i -g javascript-obfuscator  => tool to transform code to make it harder to understand and steal.
+2. Postman utility for debuging our server application.
 ```
 
+
+## Layer 
