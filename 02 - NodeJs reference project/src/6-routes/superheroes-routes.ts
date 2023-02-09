@@ -7,8 +7,6 @@ import superheroesService from "../5-services/superheroes-service";
 const router = express.Router(); // Capital R
 
 // GET http://localhost:4000/api/superheroes
-
-// router.get("/api/superheroes", consoleLogger , async (request: Request, response: Response) => {
 router.get("/api/superheroes", async (request: Request, response: Response, next: NextFunction) => {
 
     try {

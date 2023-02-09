@@ -992,4 +992,219 @@ Alex, 2023.
 ```
 
 
-## Layer 
+## Project structure
+Root will contain project config files (package.json, package-lock.json, tsconfig.json) and src folder.
+
+src folder will contain this:
+
+![alt text](screenshots/src-structure.JPG)
+
+The app.ts file 
+
+## Node js layered architecture
+
+A small app consists of three (3) layers: Router Layer, Service Layer, and Data Access Layer (DAL). The number of layers will depend on how complex your app turns out. Router Layer contains the app programming interface (API) routes of the app. Its only job is to return a response from the server.
+
+![alt text](screenshots/layered-architecture1.JPG)
+
+## Create server
+
+1. We will use local json file with superheroes, it will be in src/1-assets/data/superheroes.json:
+
+```
+[
+    {
+        "id": 1,
+        "name": "Spiderman12",
+        "ability": "Stick on walls using spider web"
+    },
+    {
+        "id": 2,
+        "name": "Superman",
+        "ability": "Amazing power, Laser eyes"
+    },
+    {
+        "id": 3,
+        "name": "Batman",
+        "ability": "Very rich and smart"
+    },
+    {
+        "id": 6,
+        "name": "Wonderwomen",
+        "ability": "Amazing strength"
+    }
+]
+```
+
+2. Create superhero model in 2-models/superhero-model.ts:
+
+```
+class SuperheroModel {
+
+    public id: number;
+    public name: string;
+    public ability: string;
+
+    public constructor(superhero: SuperheroModel) { // Copy Constructor
+        this.id = superhero.id;
+        this.name = superhero.name;
+        this.ability = superhero.ability;
+    }
+}
+
+export default SuperheroModel;
+```
+> The copy constructor will explained later.
+
+3. Create data access layer (DAL) - in 4-utils/dal.ts:
+
+```
+import fsPromises from "fs/promises";
+import SuperheroModel from "../2-models/superhero-model";
+
+// File location:
+const superheroesFile = "./src/1-assets/data/superheroes.json";
+
+// Get all superheroes from file:
+async function getAllSuperheroesFromFile(): Promise<SuperheroModel[]> {
+
+    // Read file content as a JSON string:
+    const content = await fsPromises.readFile(superheroesFile, "utf-8");
+
+    // Convert JSON string to array:
+    const superheroes = JSON.parse(content);
+
+    // Return:
+    return superheroes;
+}
+
+// Save all superheroes to file:
+async function saveAllSuperheroesToFile(superheroes: SuperheroModel[]): Promise<void> {
+
+    // Create JSON string from array:
+    const content = JSON.stringify(superheroes, null, 4);
+
+    // Save content to JSON file:
+    await fsPromises.writeFile(superheroesFile, content);
+}
+
+export default {
+    getAllSuperheroesFromFile,
+    saveAllSuperheroesToFile
+};
+
+```
+
+4. Create service in 5-services/superheroes-service.ts - here we do the necessary logics:
+
+```
+import SuperheroModel from "../2-models/superhero-model";
+import dal from "../4-utils/dal";
+
+// Get all superheroes:
+async function getAllSuperheroes(): Promise<SuperheroModel[]> {
+
+    // Get all superheroes from file:
+    const superheroes = await dal.getAllSuperheroesFromFile();
+
+    // Return:
+    return superheroes;
+}
+
+// Get one superhero:
+async function getOneSuperhero(id: number): Promise<SuperheroModel> {
+
+    // Get all superheroes from file (in real database we're get only needed one):
+    const superheroes = await dal.getAllSuperheroesFromFile();
+
+    // Find needed superhero:
+    const superhero = superheroes.find(h => h.id === id); // Returns undefined if not found.
+
+    // Return:
+    return superhero;
+}
+
+// Add new superhero:
+async function addSuperhero(superhero: SuperheroModel): Promise<SuperheroModel> {
+
+    // Get all superheroes from file:
+    const superheroes = await dal.getAllSuperheroesFromFile();
+
+    // Create new id for the given object (database will do it automatically):
+    superhero.id = superheroes[superheroes.length - 1].id + 1;
+
+    // Add object to array:
+    superheroes.push(superhero);
+
+    // Save all back to file:
+    await dal.saveAllSuperheroesToFile(superheroes);
+
+    // Return added object:
+    return superhero;
+}
+
+// Update full superhero:
+async function updateFullSuperhero(superhero: SuperheroModel): Promise<SuperheroModel> {
+
+    // Get all superheroes from file:
+    const superheroes = await dal.getAllSuperheroesFromFile();
+
+    // Find index of the object to update:
+    const index = superheroes.findIndex(h => h.id === superhero.id);
+
+    // Update that object:
+    superheroes[index] = superhero;
+
+    // Save all back to file:
+    await dal.saveAllSuperheroesToFile(superheroes);
+
+    // Return updated object:
+    return superhero;
+}
+
+// Update partial superhero:
+async function updatePartialSuperhero(superhero: SuperheroModel): Promise<SuperheroModel> {
+
+    // Get desired object from database: 
+    const dbSuperhero = await getOneSuperhero(superhero.id);
+
+    // Change only given fields:
+    for (const prop in dbSuperhero) {
+        if (superhero[prop] !== undefined) {
+            dbSuperhero[prop] = superhero[prop];
+        }
+    }
+
+    // Update back to database:
+    await updateFullSuperhero(dbSuperhero);
+
+    // Return updated object:
+    return dbSuperhero;
+}
+
+// Delete existing superhero:
+async function deleteSuperhero(id: number): Promise<void> {
+
+    // Get all superheroes from file:
+    const superheroes = await dal.getAllSuperheroesFromFile();
+
+    // Find index of the object to update:
+    const index = superheroes.findIndex(h => h.id === id);
+
+    // Delete that object:
+    superheroes.splice(index, 1);
+
+    // Save all back to file:
+    await dal.saveAllSuperheroesToFile(superheroes);
+}
+
+export default {
+    getAllSuperheroes,
+    getOneSuperhero,
+    addSuperhero,
+    updateFullSuperhero,
+    updatePartialSuperhero,
+    deleteSuperhero
+};
+
+```
