@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Spiderman",
+        "ability": "Stick on walls using spider web"
+    },
+    {
+        "id": 2,
+        "name": "Superman",
+        "ability": "Amazing power, Laser eyes"
+    },
+    {
+        "id": 3,
+        "name": "Batman",
+        "ability": "Very rich and smart"
+    },
+    {
+        "id": 6,
+        "name": "Wonderwomen",
+        "ability": "Amazing strength"
+    }
+]
