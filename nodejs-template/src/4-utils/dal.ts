@@ -1,7 +1,7 @@
 import SuperheroModel from "../2-models/superhero-model";
 import fsPromises from "fs/promises";
 
-const superheroesFile = "../1-assets/data/superheroes.json";
+const superheroesFile = "./src/1-assets/data/superheroes.json";
 
 
 
@@ -13,6 +13,7 @@ async function getAllSuperheroesFromFile():Promise<SuperheroModel[]>{
         const superheroes = JSON.parse(dataFromDb);
     
         return superheroes;
+    
     }catch(err:any){
         
         console.log(err);
