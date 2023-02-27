@@ -492,6 +492,10 @@ class InterceptorService {
                     // The needed header format: 
                     authorization: "Bearer " + authStore.getState().token // DON'T FORGET THE SPACE AFTER "Bearer "
                 }
+
+                // In other versions, it may looks like this:
+                // requestObject.headers['Authorization'] = "Bearer " + authStore.getState().token;
+                
             }
 
             // Return the updated request object:
@@ -797,7 +801,7 @@ Example:
 ```
 import jwt_decode from "jwt-decode";
  
-var token = "eyJ0eXAiO.../// jwt token";
+var token = "eyJ0eXAiO..." /// jwt token;
 var decoded = jwt_decode(token);
  
 console.log(decoded);
