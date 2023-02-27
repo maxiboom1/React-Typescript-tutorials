@@ -111,7 +111,7 @@ export default Desserts;
 **[⬆ back to top](#table-of-contents)**
 
 
-## **Events**
+## **Event handling**
 
 We can trigger functions from page events. Triggered function can be without args, with SyntheticEvent, or with customs args:
 
@@ -753,6 +753,31 @@ export function authReducer(currentState = new AuthState(), action: AuthAction):
 
 // 5. Auth Store:
 export const authStore = createStore(authReducer);
+
+```
+### **getState, dispach, subcribe**
+
+Dispach:
+```
+authStore.dispatch({type: AuthActionType.Login, payload: token});
+```
+
+Subscribe, un-subscribe, getState:
+> In this example, we set redux state in useState hook inside component. Then, we subscribe to redux change, and update local state. To unsubscribe, just exec unsubscribe var in return of useEffect hook.
+```
+    const [user,setUser] = useState<UserModel>();
+
+    useEffect(() => {
+
+        setUser(authStore.getState().user);
+
+        const unsubscribe = authStore.subscribe(()=>{
+            setUser(authStore.getState().user); 
+        });
+
+        return () => unsubscribe();
+
+    },[]);
 
 ```
 
