@@ -137,6 +137,8 @@ function Recommendations(): JSX.Element {
     function four(args: ChangeEvent<HTMLSelectElement>):void{
         alert(args.target.value); // Get value (myData) from HTML element
     }
+
+
     return (
         <div className="Recommendations Box">
 
@@ -147,6 +149,9 @@ function Recommendations(): JSX.Element {
 			<button onClick={() => third("Apple Pie", 12)}>Third</button>
 
             <button value="myData" onClick={four}>Four</button>
+
+            <!-- Option 2 - in this case function will expect just value (function four(value){...}) -->
+            <button value="myData" onClick={(e)=>four(e)}>Four</button>
 
 
         </div>
