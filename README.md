@@ -113,7 +113,7 @@ export default Desserts;
 
 ## **Event handling**
 
-We can trigger functions from page events. Triggered function can be without args, with SyntheticEvent, or with customs args:
+We can trigger functions from page events. Triggered function can be without args, with SyntheticEvent/ ChangeEvent etc.. , or with customs args:
 
 ```
 function Recommendations(): JSX.Element {
@@ -133,6 +133,10 @@ function Recommendations(): JSX.Element {
         console.log(item, price);
     }
 
+    // Getting value from HTML element:
+    function four(args: ChangeEvent<HTMLSelectElement>):void{
+        alert(args.target.value); // Get value (myData) from HTML element
+    }
     return (
         <div className="Recommendations Box">
 
@@ -141,6 +145,9 @@ function Recommendations(): JSX.Element {
 			<button onClick={second}>Second</button>
 
 			<button onClick={() => third("Apple Pie", 12)}>Third</button>
+
+            <button value="myData" onClick={four}>Four</button>
+
 
         </div>
     );
