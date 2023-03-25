@@ -119,31 +119,37 @@ We can trigger functions from page events. Triggered function can be without arg
 ```
 function Recommendations(): JSX.Element {
 
-    // No arguments:
+    //1. No arguments:
     function first(): void {
         console.log('click on btn');
     }
 
-    // SyntheticEvent argument (or derivation):
+    //2. SyntheticEvent argument (or derivation):
     function second(args: SyntheticEvent): void {
         console.log(args);
     }
 
-    // Getting my own arguments:
+    //3. Getting my own arguments:
     function third(item: string, price: number): void {
         console.log(item, price);
     }
 
-    // Getting value from HTML element:
+    //4. Getting value from HTML element:
     function four(args: ChangeEvent<HTMLSelectElement>):void{
         alert(args.target.value); // Get value (myData) from HTML element
+    }
+
+    //5. Get value and store it in state (The trick is to set input value={text}):
+    const [text,setText] = useState<string>("");
+    function handleText(args: ChangeEvent<HTMLInputElement>): void {
+        setText(args.target.value);
     }
 
 
     return (
         <div className="Recommendations Box">
 
-			<button onClick={first}>First</button>
+			<button onClick={first}>First</button> 
 
 			<button onClick={second}>Second</button>
 
@@ -154,6 +160,7 @@ function Recommendations(): JSX.Element {
             <!-- Option 2 - in this case function will expect just value (function four(value){...}) -->
             <button value="myData" onClick={(e)=>four(e)}>Four</button>
 
+            <input type="text" value={text} onChange={handleText} />
 
         </div>
     );
