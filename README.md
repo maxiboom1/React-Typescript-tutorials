@@ -112,7 +112,7 @@ export default Desserts;
 **[⬆ back to top](#table-of-contents)**
 
 
-## **Event handling**
+## **Events**
 
 We can trigger functions from page events. Triggered function can be without args, with SyntheticEvent/ ChangeEvent etc.. , or with customs args:
 
