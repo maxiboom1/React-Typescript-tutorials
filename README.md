@@ -8,7 +8,7 @@
   5. [Events](#Events)
   6. [Media](#Media)
   7. [Props](#Props)
-  8. [State and side effect](#State-and-side-effect)
+  8. [Hooks: useState, useEffect, useRef](#State-and-side-effect)
         - [useState](#useState)
         - [useEffect](#useEffect)
   9. [Routing](#Routing)
@@ -208,7 +208,7 @@ function Sale(props: SaleProps): JSX.Element {
 
 
 
-## **State and side effect**
+## **Hooks: useState, useEffect, useRef**
 
 
 - **Hooks** - React system functions - we can't change their names. 
@@ -281,6 +281,36 @@ useEffect(()=>{
     }
 },[a, b, c]);
 ```
+**[⬆ back to top](#table-of-contents)**
+
+
+### **useRef**
+
+useRef hook can be used to access DOM elements directly.
+
+Example of how it works:
+
+```
+function List():JSX.Element {
+
+    const elementValue = useRef(null); // Init hook and its value
+
+    function printElementValue(){
+        console.log(elementValue.current.value);
+    }
+
+    return (
+        <div className="List">
+            <label>useRef example:</label>
+            <input ref={elementValue} type="number" />
+            <button onClick={printElementValue} >Print input value</button>
+        </div>
+    );
+
+}
+
+```
+
 **[⬆ back to top](#table-of-contents)**
 
 
