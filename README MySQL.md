@@ -9,3 +9,7 @@
 ![alt text](screenshots/SQL-9.PNG)
 ![alt text](screenshots/SQL-10.PNG)
 ![alt text](screenshots/SQL-11.PNG)
+![alt text](screenshots/SQL-12.PNG)
+![alt text](screenshots/SQL-13.PNG)
+![alt text](screenshots/SQL-14.PNG)
+![alt text](screenshots/SQL-15.PNG)
