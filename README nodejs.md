@@ -1,11 +1,35 @@
 
 
 ## NodeJs
+  1. [Basics](#Basics)
   1. [NodeJs Installations](#NodeJs-installations)
-  
+  2. [Project structure](#Project-structure)
+  3. [Node js layered architecture](#Node-js-layered-architecture)
+  4. [Middleware](#Middleware)
 
-## NodeJs
 
+## **Basics**
+
+Node.js can run javascript on backend server, without browser.
+We can implement typescript in Node.js.
+There is no window object in Node.js, neither document, alert, browser..
+
+Packages:
+Package is an complete Node.js project' and can include many JS (or TS) files.
+
+Modules:
+Single js or ts file.
+Node.js automatically wraps any module with IIFE (immediatly invoked function expression).
+Modules can be:
+- Custom module - module that we creating in our projects. Module name is the js (or ts) file name.
+- NPM module - the packages and modules that we install from NPM servers. It will be in node_modules folder
+- Built-in module - those modules is included in node.js by default and no need to install them.
+
+Package.json file:
+Its an project settings file. We can create it with "npm init -y".
+
+Nodemon:
+With nodemon we can run node.js with hot-reloading. 
 
 ## **NodeJs Installations**
 
@@ -58,9 +82,17 @@ Middleware can be registered at the level of the entire site or at the level of 
 
 Middleware can perform some activity and then continue the flow to the next Middleware or Route (if it exists just before the Route). This is by calling the next() function.
 
+Order of middleware registration will be the order of the flow (we register it usually in app.ts).
+
 Middleware can break the flow and return the response:
 
 ![alt text](screenshots/middleware.JPG)
+
+## Error handling
+
+
+
+
 
 
 
