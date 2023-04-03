@@ -121,7 +121,9 @@ function catchAll(err: any, request: Request, response: Response, next: NextFunc
 
 export default catchAll;
 ```
+### Client errors:
 
+If 
 
 
 
