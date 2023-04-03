@@ -8,7 +8,6 @@ abstract class ClientError {
         this.status = status;
         this.message = message;
     }
-
 }
 
 // Route not found error: 
