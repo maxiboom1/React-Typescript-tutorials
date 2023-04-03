@@ -94,7 +94,7 @@ There is special middleware function, that gets 4 arguments: err obj, request, r
 
 We must register it after all routes. If some middleware trigger this func, its skips all other flows and get to this middleware func. Its easy to think about it like all the flow (with all middlewares) was in an "try" segment, while this special middleware is an "catch" segment:
 
-![alt text](screenshots/catch-all.jpg)
+![alt text](screenshots/catchall.jpg)
 
 
 
