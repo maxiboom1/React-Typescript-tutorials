@@ -80,7 +80,7 @@ Everything we want to do automatically can be done in middleware, such as writin
 
 Middleware can be registered at the level of the entire site or at the level of a specific route.
 
-Middleware can perform some activity and then continue the flow to the next Middleware or Route (if it exists just before the Route). This is by calling the next() function.
+Middleware can perform some activity and then continue the flow to the next Middleware or Route (if it exists just before the Route). This is by calling the  NextFunction() function.
 
 Order of middleware registration will be the order of the flow (we register it usually in app.ts).
 
@@ -90,8 +90,11 @@ Middleware can break the flow and return the response:
 
 ## Error handling
 
+There is special middleware function, that gets 4 arguments: err obj, request, response, next. 
 
+We must register it after all routes. If some middleware trigger this func, its skips all other flows and get to this middleware func. Its easy to think about it like all the flow (with all middlewares) was in an "try" segment, while this special middleware is an "catch" segment:
 
+![alt text](screenshots/catch-all.png)
 
 
 
