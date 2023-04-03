@@ -104,6 +104,23 @@ We must register it after all routes. If some middleware trigger this func, its 
 - 401 - Unauthorized error
 - 403 - Forbidden (Permission denied)
 
+For all unknown errors we call catch-all middleware. Here is code example:
+```
+import { NextFunction, Request, Response } from "express";
+
+function catchAll(err: any, request: Request, response: Response, next: NextFunction) {
+    
+    // Display/log error
+
+    // Find status code: 
+    const statusCode = err.status || 500; // Short Circuit
+
+    // Send back error details to frontend:
+    response.status(statusCode).send(err.message);
+}
+
+export default catchAll;
+```
 
 
 
