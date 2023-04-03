@@ -98,11 +98,11 @@ We must register it after all routes. If some middleware trigger this func, its 
 
 ### Common errors:
 
-500 - Server internal error
-404 - Page not found, resource not found (id based route)
-400 - Validation error
-401 - Unauthorized error
-403 - Forbidden (Permission denied)
+- 500 - Server internal error
+- 404 - Page not found, resource not found (id based route)
+- 400 - Validation error
+- 401 - Unauthorized error
+- 403 - Forbidden (Permission denied)
 
 
 
