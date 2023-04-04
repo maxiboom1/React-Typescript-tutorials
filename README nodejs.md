@@ -72,8 +72,6 @@ src folder will contain this:
 
 ![alt text](screenshots/src-structure.JPG)
 
-The app.ts file
-
 **[⬆ back to top](#nodejs)**
 
 
