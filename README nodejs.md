@@ -112,7 +112,7 @@ When error occurs, server typically returns  error object with error code and er
 - 401 - Unauthorized error
 - 403 - Forbidden (Permission denied)
 
-### Unexpected/unknown errors catch:
+### 1. Unexpected/unknown errors catch:
 
 There is special middleware function, that gets 4 arguments: err obj, request, response, next. 
 If some middleware trigger this function, it's skips all other flows and get to this middleware function. Its easy to think about it like all the flow (with all middlewares) was in an "try" segment, while this special middleware is an "catch" segment. 
@@ -138,7 +138,7 @@ function catchAll(err: any, request: Request, response: Response, next: NextFunc
 
 export default catchAll;
 ```
-### Route not found error:
+### 2. Route not found error:
 
 1. Create middleware function that creates RouteNotFoundError (we will describe user errors in next paragraph), and pass it to catch-all: 
 ```
@@ -158,7 +158,7 @@ server.use("*", routeNotFound);
 server.use(catchAll);
 ```
 
-### Client errors:
+### 3. Client errors:
 
 Validation, authorization and permission errors. We create them using userError model with base abstract ClientError class, and errors that extends that base. 
 And we can throw new clientError anywhere in our code.
