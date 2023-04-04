@@ -7,6 +7,9 @@
   3. [Node js layered architecture](#Node-js-layered-architecture)
   4. [Middleware](#Middleware)
   5. [Error handling](#error-handling)
+        - [Unexpected Errors](#Unexpected/unknown-errors-catch)
+        - [Route not found error](#Route-not-found-error:)
+        - [Client errors](#Client-errors)
 
 
 ## **Basics**
@@ -95,9 +98,9 @@ Handling errors mechanism is an must-have part of server-side application.
 
 > #### **Common scenarios are:**
 >
-> - Unexpected errors, that can caused by internal app failure.
-> - Route not found error.
-> - User errors - based on data from user - for example 'given username already exists in database' etc...
+> 1. Unexpected errors, that can caused by internal app failure.
+> 2. Route not found error.
+> 3. User errors - based on data from user - for example 'given username already exists in database' etc...
 
 When error occurs, server typically returns  error object with error code and error message.
 
@@ -155,7 +158,7 @@ server.use("*", routeNotFound);
 server.use(catchAll);
 ```
 
-### User errors:
+### Client errors:
 
 Validation, authorization and permission errors. We create them using userError model with base abstract ClientError class, and errors that extends that base. 
 And we can throw new clientError anywhere in our code.
