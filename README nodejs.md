@@ -8,7 +8,7 @@
   4. [Middleware](#Middleware)
   5. [Error handling](#error-handling)
         - [Unexpected Errors](#Unexpected/unknown-errors-catch)
-        - [Route not found error](#Route-not-found-error:)
+        - [Route not found error](#Route-not-found-error)
         - [Client errors](#Client-errors)
 
 
