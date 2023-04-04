@@ -13,7 +13,7 @@
         - [useEffect](#useEffect)
         - [useRef](#useRef)
   9. [Routing](#Routing)
-  10. [Ajax, Services, Models, AppConfig](#Ajax-Services-Models-AppConfig) 
+  10. [Ajax, Services, Models, AppConfig, Interceptors](#Ajax-Services-Models-AppConfig-Interceptors) 
   11. [Form handling](#Form-handling)
   12. [Redux](#Redux)
   13. [Json Web Token - JWT](#Json-Web-Token)
@@ -430,7 +430,7 @@ const passedParameter = params.prodId; // will contain the passed value.
 
 **[⬆ back to top](#table-of-contents)**
 
-## **Ajax, Services, Models, AppConfig** 
+## **Ajax, Services, Models, AppConfig, Interceptors** 
 
 ### **Concept**
 
