@@ -90,13 +90,17 @@ Middleware can break the flow and return the response:
 
 ## Error handling
 
-There is special middleware function, that gets 4 arguments: err obj, request, response, next. 
+Handling errors mechanism is an must-have part of server-side application.
 
-We must register it after all routes. If some middleware trigger this func, its skips all other flows and get to this middleware func. Its easy to think about it like all the flow (with all middlewares) was in an "try" segment, while this special middleware is an "catch" segment:
+> #### **Common scenarios are:**
+>
+> - Unexpected errors, that can caused by internal app failure.
+> - Route not found error.
+> - User errors - based on data from user - for example 'given username already exists in database' etc...
 
-![alt text](/screenshots/catchall.JPG)
+When error occurs, server typically returns  error object with error code and error message.
 
-### Common errors:
+### Common errors are:
 
 - 500 - Server internal error
 - 404 - Page not found, resource not found (id based route)
@@ -104,7 +108,16 @@ We must register it after all routes. If some middleware trigger this func, its 
 - 401 - Unauthorized error
 - 403 - Forbidden (Permission denied)
 
-For all unknown errors we call catch-all middleware. Here is code example:
+### Unexpected/unknown errors catch:
+
+There is special middleware function, that gets 4 arguments: err obj, request, response, next. 
+If some middleware trigger this function, it's skips all other flows and get to this middleware function. Its easy to think about it like all the flow (with all middlewares) was in an "try" segment, while this special middleware is an "catch" segment. 
+![alt text](/screenshots/catchall.JPG)
+
+
+It is an good practice to wrap all application routes with try catch code, and pass the error to next(err) (catch-all) middleware.
+**We must register it after all routes.**
+Here is code example:
 ```
 import { NextFunction, Request, Response } from "express";
 
@@ -121,10 +134,72 @@ function catchAll(err: any, request: Request, response: Response, next: NextFunc
 
 export default catchAll;
 ```
-### Client errors:
+### Route not found error:
 
-If 
+1. Create middleware function that creates RouteNotFoundError (we will describe user errors in next paragraph), and pass it to catch-all: 
+```
+function routeNotFound(request: Request, response: Response, next: NextFunction) {
+    const err = new RouteNotFoundError(request.originalUrl);
+    next(err);
+}
+``` 
+2. Register routeNotFound as middleware, after all  middlewares and routes, just before the last catch-all middleware:
+```
+//register application routes and middlewares...
 
+// Route not found middleware:
+server.use("*", routeNotFound);
+
+// Register catch-all middleware:
+server.use(catchAll);
+```
+
+### User errors:
+
+Validation, authorization and permission errors. We create them using userError model with base abstract ClientError class, and errors that extends that base:
+
+```
+// Base client error:
+abstract class ClientError {
+
+    public status: number;
+    public message: string;
+
+    public constructor(status: number, message: string) {
+        this.status = status;
+        this.message = message;
+    }
+
+}
+
+// Route not found error: 
+export class RouteNotFoundError extends ClientError {
+    public constructor(route: string) {
+        super(404, `Route ${route} not found`);
+    }
+}
+
+// Resource not found error: 
+export class ResourceNotFoundError extends ClientError {
+    public constructor(id: number) {
+        super(404, `id ${id} not found`);
+    }
+}
+
+// Validation error: 
+export class ValidationError extends ClientError {
+    public constructor(message: string) {
+        super(400, message);
+    }
+}
+
+// Authorization error: 
+export class UnauthorizedError extends ClientError {
+    public constructor(message: string) {
+        super(401, message);
+    }
+}
+```
 
 
 
