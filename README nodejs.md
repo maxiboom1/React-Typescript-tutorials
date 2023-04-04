@@ -35,6 +35,9 @@ Its an project settings file. We can create it with "npm init -y".
 Nodemon:
 With nodemon we can run node.js with hot-reloading. 
 
+**[⬆ back to top](#nodejs)**
+
+
 ## **NodeJs Installations**
 
 > NodeJs project install:
@@ -59,6 +62,7 @@ With nodemon we can run node.js with hot-reloading.
 1. npm i -g javascript-obfuscator  => tool to transform code to make it harder to understand and steal.
 2. Postman utility for debugging our server application.
 ```
+**[⬆ back to top](#nodejs)**
 
 
 ## Project structure
@@ -68,13 +72,20 @@ src folder will contain this:
 
 ![alt text](screenshots/src-structure.JPG)
 
-The app.ts file 
+The app.ts file
+
+**[⬆ back to top](#nodejs)**
+
 
 ## Node js layered architecture
 
 A small app consists of three (3) layers: Router Layer, Service Layer, and Data Access Layer (DAL). The number of layers will depend on how complex your app turns out. Router Layer contains the app programming interface (API) routes of the app. Its only job is to return a response from the server.
 
-![alt text](screenshots/layered-architecture1.JPG).
+![alt text](screenshots/layered-architecture1.JPG)
+
+**[⬆ back to top](#nodejs)**
+
+
 
 ## Middleware
 
@@ -91,6 +102,10 @@ Order of middleware registration will be the order of the flow (we register it u
 Middleware can break the flow and return the response:
 
 ![alt text](screenshots/middleware.JPG)
+
+**[⬆ back to top](#nodejs)**
+
+
 
 ## Error handling
 
@@ -138,6 +153,8 @@ function catchAll(err: any, request: Request, response: Response, next: NextFunc
 
 export default catchAll;
 ```
+**[⬆ back to top](#nodejs)**
+
 ### 2. Route not found error:
 
 1. Create middleware function that creates RouteNotFoundError (we will describe user errors in next paragraph), and pass it to catch-all: 
@@ -157,6 +174,8 @@ server.use("*", routeNotFound);
 // Register catch-all middleware:
 server.use(catchAll);
 ```
+**[⬆ back to top](#nodejs)**
+
 
 ### 3. Client errors:
 
@@ -206,7 +225,6 @@ export class UnauthorizedError extends ClientError {
     }
 }
 ```
-
-
+**[⬆ back to top](#nodejs)**
 
 
