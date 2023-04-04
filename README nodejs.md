@@ -6,6 +6,7 @@
   2. [Project structure](#Project-structure)
   3. [Node js layered architecture](#Node-js-layered-architecture)
   4. [Middleware](#Middleware)
+  5. [Error handling](#error-handling)
 
 
 ## **Basics**
@@ -156,7 +157,9 @@ server.use(catchAll);
 
 ### User errors:
 
-Validation, authorization and permission errors. We create them using userError model with base abstract ClientError class, and errors that extends that base:
+Validation, authorization and permission errors. We create them using userError model with base abstract ClientError class, and errors that extends that base. 
+And we can throw new clientError anywhere in our code.
+Example of client error model:
 
 ```
 // Base client error:
