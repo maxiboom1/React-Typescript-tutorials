@@ -226,3 +226,25 @@ export class UnauthorizedError extends ClientError {
 **[⬆ back to top](#nodejs)**
 
 
+## Handling images
+
+There is an couple of things we need to do. First, we need to give an uniq UUID (Universal Unique IDentifier), that also called GUID (Global Unique IDentifier) - GUID is an microsoft terminology.
+
+```
+npm i uuid
+npm i @types/uuid -D
+
+```
+
+Also, we need to install file upload package, who will mess with file uploads:
+
+```
+npm i express-fileupload
+npm i @types/express-fileupload -D
+
+```
+
+
+**[⬆ back to top](#nodejs)**
+
+
