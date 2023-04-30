@@ -80,3 +80,14 @@ public constructor(theNeededObject: SomeUtility) { … }
 }
 We request the object in the constructor of the class we are building.
 The framework should create the object from our class and inject the required object into it.
+
+## Observable
+This is an object that comes from an external library that also exists in Angular called "rxjs".
+This object is similar to a Promise but much more powerful and capable.
+A Promise is used to run asynchronous code and report success or failure.
+An Observable is used to run asynchronous code but can report information over time, or a single failure.
+Examples of implementation:
+
+The Socket.io mechanism reports information to a Service in Angular every time interval, and we want to report the information to the component every time it arrives.
+A service that randomly picks a color at a certain time interval and reports it.
+A service that browses a remote server at a certain time interval and receives information and reports it.
