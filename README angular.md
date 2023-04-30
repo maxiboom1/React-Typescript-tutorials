@@ -46,3 +46,37 @@ D. Interpolation - displaying data from the component class directly within the 
 ```
 example
 ```
+
+## Directive
+
+Custom HTML Attribute is an attribute written in Angular that behaves like an HTML attribute.
+
+There are two types of directives:
+A. Attribute Directive - changes made to the tag itself, such as structural changes, design changes, and changes in behavior.
+B. Structural Directive - an attribute that instructs how many times to insert the tag into the DOM. It can be 0 or more times. Every Structural Directive starts with an asterisk (*).
+
+## Pipe
+
+The change that occurs on the value displayed in Interpolation.
+In practice, this is a function that receives the value and returns a different value.
+Because it is a function, it can accept arguments, for example - configuration of the change.
+
+## Template Reference Variable
+
+A unique identifier we give to a tag.
+It is known not to give any id to tags in a component-based project.
+This is an invented word written with the # sign. Behind the scenes, this is the actual object in the DOM that represents the tag.
+This object can be accessed from another component in the HTML, from TypeScript, or sent to a function in TypeScript.
+
+## Accessing a remote server:
+We use a service called HttpClient that exists in the HttpClientModule module, which we need to import into our module.
+
+## Dependency Injection - DI
+This is a design pattern that allows the framework to provide us with a specific object required by the class we are building.
+class CalculateSomething {
+// We need some system object…
+public constructor(theNeededObject: SomeUtility) { … }
+
+}
+We request the object in the constructor of the class we are building.
+The framework should create the object from our class and inject the required object into it.
