@@ -40,17 +40,17 @@ The AppModule is the main module that exists.
 A connection between a source and a target. Any changes made in the source affect the target.
 There are four types of binding:
 
-A. Property Binding - a binding between a variable in the component class and an HTML attribute. 
+A. **Property Binding** - a binding between a variable in the component class and an HTML attribute. 
 Any change in the variable affects the attribute.
 
-B. Event Binding - a binding between an HTML tag event and a function in the component class. The event triggers the function.
+B. **Event Binding** - a binding between an HTML tag event and a function in the component class. The event triggers the function.
 
-C. Two-Way Binding (also called banana in the box [()]) - a binding between an input box and a variable. 
+C. **Two-Way Binding** (also called banana in the box [()]) - a binding between an input box and a variable. 
 Changing the input box value will immediately update the variable value. 
 Changing the variable value will display it in the input box.
 ** Note that to use [(ngModel)] we have to import FormModule in app.module config file 
 
-D. Interpolation - displaying data from the component class directly within the HTML.
+D. **Interpolation** - displaying data from the component class directly within the HTML.
 
 Examples:
 ```
