@@ -1,6 +1,20 @@
-# Table of Contents
+## Table of Contents
 
-  1. [Installations](#installations)
+- [Installation](#installation)
+- [Annotations](#annotations)
+- [Module](#module)
+- [Data Binding](#data-binding)
+- [Property Binding](#property-binding)
+- [Event Binding](#event-binding)
+- [Two-Way Binding](#two-way-binding)
+- [Interpolation](#interpolation)
+- [Directive](#directive)
+- [Attribute Directive](#attribute-directive)
+- [Structural Directive](#structural-directive)
+- [Pipe](#pipe)
+- [Routing](#routing)
+- [Template Reference Variable](#template-reference-variable)
+- [Accessing a Remote Server](#accessing-a-remote-server)
   
 ## Installation
 
