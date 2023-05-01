@@ -24,17 +24,23 @@ ng g c component/home-area/home --skip tests => Creates new component structure
 
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Annotation
 
 This is a command that we write above some programming element such as a class, method, data-member, etc., that indicates something to the framework.
 Every annotation starts with "@".
 For example, "@Component" is an annotation that is written above a class and indicates to Angular that the class is a component.
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Module
 
 This is a wrapper for components.
 In Angular, a component should belong to one and only one module.
 The AppModule is the main module that exists.
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Data Binding
 
@@ -83,6 +89,8 @@ export class HomeComponent {
 
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Directive
 
 Custom HTML Attribute is an attribute written in Angular that behaves like an HTML attribute.
@@ -104,6 +112,7 @@ Every Structural Directive starts with an asterisk (*).
 
 ```
 
+**[⬆ back to top](#table-of-contents)**
 
 ## Pipe
 
@@ -118,6 +127,8 @@ public date = new Date();
 ```
 You can read more here:
 https://angular.io/api?type=pipe
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Routing
 1. Place router special tag whenever we want it (usually in site layout section):
@@ -157,6 +168,8 @@ export class AppRoutingModule { }
     <a routerLink="/insert">Insert</a>
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## TVR-Template Reference Variable 
 
 A unique identifier we give to a tag.
@@ -194,6 +207,8 @@ public show() : void {
 }
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Dependency Injection
 DI - This is a design pattern that allows the framework to provide us with a specific object required by the class we are building.
 
@@ -207,6 +222,8 @@ public constructor(theNeededObject: SomeUtility) { … }
 We request the object in the constructor of the class we are building.
 The framework should create the object from our class and inject the required object into it.
 So, we don't export singleton, since framework runs it automatically on load (because of DI).
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Accessing a remote server:
 We use a service called HttpClient that exists in the HttpClientModule module, which we need to import into our module.
@@ -260,6 +277,7 @@ export class ProductListComponent implements OnInit {
 }
 ```
 
+**[⬆ back to top](#table-of-contents)**
 
 ## Observable
 This is an object that comes from an external library that also exists in Angular called "rxjs".
@@ -271,3 +289,5 @@ Examples of implementation:
 The Socket.io mechanism reports information to a Service in Angular every time interval, and we want to report the information to the component every time it arrives.
 A service that randomly picks a color at a certain time interval and reports it.
 A service that browses a remote server at a certain time interval and receives information and reports it.
+
+**[⬆ back to top](#table-of-contents)**
