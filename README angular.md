@@ -32,15 +32,22 @@ There are four types of binding:
 
 A. Property Binding - a binding between a variable in the component class and an HTML attribute. Any change in the variable affects the attribute.
 ```
-example
+public tooltip = Math.random() < 0.5 ? "value-a" : "value-b"> // .ts file:
+<label [title]="tooltip"></label> // .html file:
 ```
 B. Event Binding - a binding between an HTML tag event and a function in the component class. The event triggers the function.
 ```
-example
+public search () {} // function to trigger
+<button (click)="search()"></button>
 ```
-C. Two-Way Binding - a binding between an input box and a variable. Changing the input box value will immediately update the variable value. Changing the variable value will display it in the input box.
+C. Two-Way Binding (also called banana in the box [()]) - a binding between an input box and a variable. 
+Changing the input box value will immediately update the variable value. 
+Changing the variable value will display it in the input box.
+** Note that to use [(ngModel)] we have to import FormModule in app.module config file 
 ```
-example
+public textToSearch: string;
+<input type="search" [(ngModel)]="textToSearch"></input>
+
 ```
 D. Interpolation - displaying data from the component class directly within the HTML.
 ```
