@@ -79,8 +79,20 @@ Custom HTML Attribute is an attribute written in Angular that behaves like an HT
 There are two types of directives:
 
 A. Attribute Directive - changes made to the tag itself, such as structural changes, design changes, and changes in behavior.
+```
+public style = {color: Math.random() > 0.5 ? "red" : "blue"}
+<span [ngStyle]="style">Our Products</span>
+```
+B. Structural Directive - an attribute that instructs how many times to insert the tag into the DOM. It can be 0 or more times. 
+Every Structural Directive starts with an asterisk (*).
+```
+// Render or not => *ngIf
+<span *ngIf="isWeekend()">Our Products</span>
+// Array render => *ngFor
+<span *ngFor="let p of products">{{d.name}}</span>
 
-B. Structural Directive - an attribute that instructs how many times to insert the tag into the DOM. It can be 0 or more times. Every Structural Directive starts with an asterisk (*).
+```
+
 
 ## Pipe
 
