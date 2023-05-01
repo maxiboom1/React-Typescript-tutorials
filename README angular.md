@@ -30,7 +30,8 @@ The AppModule is the main module that exists.
 A connection between a source and a target. Any changes made in the source affect the target.
 There are four types of binding:
 
-A. Property Binding - a binding between a variable in the component class and an HTML attribute. Any change in the variable affects the attribute.
+A. Property Binding - a binding between a variable in the component class and an HTML attribute. 
+Any change in the variable affects the attribute.
 
 B. Event Binding - a binding between an HTML tag event and a function in the component class. The event triggers the function.
 
@@ -76,7 +77,9 @@ export class HomeComponent {
 Custom HTML Attribute is an attribute written in Angular that behaves like an HTML attribute.
 
 There are two types of directives:
+
 A. Attribute Directive - changes made to the tag itself, such as structural changes, design changes, and changes in behavior.
+
 B. Structural Directive - an attribute that instructs how many times to insert the tag into the DOM. It can be 0 or more times. Every Structural Directive starts with an asterisk (*).
 
 ## Pipe
