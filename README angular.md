@@ -7,7 +7,7 @@
 - [Directive](#directive)
 - [Pipe](#pipe)
 - [Routing](#routing)
-- [TVR - Template Reference Variable](#TVR-template-reference-variable)
+- [TVR-Template Reference Variable](#TVR-template-reference-variable)
 - [Accessing a Remote Server](#accessing-a-remote-server)
   
 ## Installation
@@ -156,7 +156,7 @@ export class AppRoutingModule { }
     <a routerLink="/insert">Insert</a>
 ```
 
-## TVR - Template Reference Variable 
+## TVR-Template Reference Variable 
 
 A unique identifier we give to a tag.
 It is known not to give any id to tags in a component-based project.
