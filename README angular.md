@@ -11,6 +11,8 @@ ng new my-angular-project --skip-tests => New project
 
 ng serve => start angular app (write it in package.json start)
 
+ng g c component/home-area/home --skip tests => Creates new component structure
+
 ```
 
 ## Annotation
@@ -99,6 +101,14 @@ Every Structural Directive starts with an asterisk (*).
 The change that occurs on the value displayed in Interpolation.
 In practice, this is a function that receives the value and returns a different value.
 Because it is a function, it can accept arguments, for example - configuration of the change.
+```
+public price = 50;
+public date = new Date();
+<span> {{price | currency:"USD"}} // expected output : 50$ 
+<span> {{time | date:"MMMM YYYY"}} // expected output : April 2023
+```
+You can read more here:
+https://angular.io/api?type=pipe
 
 ## Template Reference Variable
 
