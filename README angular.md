@@ -40,42 +40,42 @@ The AppModule is the main module that exists.
 A connection between a source and a target. Any changes made in the source affect the target.
 There are four types of binding:
 
-A. **Property Binding** - a binding between a variable in the component class and an HTML attribute. 
+1. **Property Binding** - a binding between a variable in the component class and an HTML attribute. 
 Any change in the variable affects the attribute.
 
-B. **Event Binding** - a binding between an HTML tag event and a function in the component class. The event triggers the function.
+2. **Event Binding** - a binding between an HTML tag event and a function in the component class. The event triggers the function.
 
-C. **Two-Way Binding** (also called banana in the box [()]) - a binding between an input box and a variable. 
+3. **Two-Way Binding** (also called banana in the box [()]) - a binding between an input box and a variable. 
 Changing the input box value will immediately update the variable value. 
 Changing the variable value will display it in the input box.
 ** Note that to use [(ngModel)] we have to import FormModule in app.module config file 
 
-D. **Interpolation** - displaying data from the component class directly within the HTML.
+4. **Interpolation** - displaying data from the component class directly within the HTML.
 
 Examples:
 ```
 // TS
 export class HomeComponent {
-  // A. Property binding
+  // 1. Property binding
   public tooltip = Math.random() > 0.5 ? "value-a" : "value-b"
-  // B. Event binding 
+  // 2. Event binding 
   public search(){
     alert('Button clicked');
     this.textToSearch = 'new'
   }
-  // C. Two-way binding (Banana in the box)
+  // 3. Two-way binding (Banana in the box)
   public textToSearch: string;
 
 }
 // HTML
 <div>
-    <!-- A. Property binding -->
+    <!-- 1. Property binding -->
     <label [title]="tooltip">Label</label> 
-    <!-- B. Event binding -->
+    <!-- 2. Event binding -->
     <button (click)="search()">Search</button>
-    <!-- C. Two-way binding -->
+    <!-- 3. Two-way binding -->
     <input type="search" [(ngModel)]="textToSearch">
-    <!-- D. Interpolation  -->
+    <!-- 4. Interpolation  -->
     <p>{{textToSearch}}</p>
 
 </div>
@@ -88,12 +88,12 @@ Custom HTML Attribute is an attribute written in Angular that behaves like an HT
 
 There are two types of directives:
 
-A. Attribute Directive - changes made to the tag itself, such as structural changes, design changes, and changes in behavior.
+1. **Attribute Directive** - changes made to the tag itself, such as structural changes, design changes, and changes in behavior.
 ```
 public style = {color: Math.random() > 0.5 ? "red" : "blue"}
 <span [ngStyle]="style">Our Products</span>
 ```
-B. Structural Directive - an attribute that instructs how many times to insert the tag into the DOM. It can be 0 or more times. 
+2. **Structural Directive** - an attribute that instructs how many times to insert the tag into the DOM. It can be 0 or more times. 
 Every Structural Directive starts with an asterisk (*).
 ```
 // Render or not => *ngIf
