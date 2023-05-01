@@ -1,4 +1,5 @@
 ## Table of Contents
+## Angular with Typescript
 
 - [Installation](#installation)
 - [Annotations](#annotations)
