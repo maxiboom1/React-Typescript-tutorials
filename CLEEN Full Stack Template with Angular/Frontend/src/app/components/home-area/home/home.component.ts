@@ -11,6 +11,7 @@ export class HomeComponent {
   // B. Event binding 
   public search(){
     alert('Button clicked');
+    this.textToSearch = 'new'
   }
   // C. Two-way binding (Banana in the box)
   public textToSearch: string;
