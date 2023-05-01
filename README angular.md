@@ -64,6 +64,7 @@ export class HomeComponent {
     <button (click)="search()">Search</button>
     <!-- C. Two-way binding -->
     <input type="search" [(ngModel)]="textToSearch">
+    <!-- D. Interpolation  -->
     <p>{{textToSearch}}</p>
 
 </div>
