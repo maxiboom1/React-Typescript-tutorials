@@ -8,6 +8,7 @@
 - [Pipe](#pipe)
 - [Routing](#routing)
 - [TVR-Template Reference Variable](#TVR-template-reference-variable)
+- [Dependency Injection](#dependency-injection)
 - [Accessing a Remote Server](#accessing-a-remote-server)
   
 ## Installation
@@ -193,8 +194,8 @@ public show() : void {
 }
 ```
 
-## Dependency Injection - DI
-This is a design pattern that allows the framework to provide us with a specific object required by the class we are building.
+## Dependency Injection
+DI - This is a design pattern that allows the framework to provide us with a specific object required by the class we are building.
 
 ```
 class CalculateSomething {
