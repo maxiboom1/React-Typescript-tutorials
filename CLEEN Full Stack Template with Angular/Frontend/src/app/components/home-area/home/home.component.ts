@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  // A. Property binding
+  public tooltip = Math.random() > 0.5 ? "value-a" : "value-b"
+  // B. Event binding 
+  public search(){
+    alert('Button clicked');
+  }
+  // C. Two-way binding (Banana in the box)
+  public textToSearch: string;
 
 }
