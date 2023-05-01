@@ -163,6 +163,35 @@ It is known not to give any id to tags in a component-based project.
 This is an invented word written with the # sign. Behind the scenes, this is the actual object in the DOM that represents the tag.
 This object can be accessed from another component in the HTML, from TypeScript, or sent to a function in TypeScript.
 
+In this example - we get selector value access in 3 different ways:
+
+```
+<select #myLocation (change)="display(myLocation)">
+    <option>North</option>
+    <option>South</option>
+    <option>East</option>
+    <option>West</option>
+</select>
+
+<!-- First access: -->
+<span>My Location: {{myLocation.value}}</span>
+```
+TS file of same component:
+```
+// Second access:
+public display(myLocation: HTMLSelectElement): void {
+    alert("Location: " + myLocation.value);
+}
+
+// Third access:
+@ViewChild("myLocation")
+public myLocationWrapper: ElementRef<HTMLSelectElement>;
+public show() : void {
+    const myLocation = this.myLocationWrapper.nativeElement;
+    alert("Location: " + myLocation.value);
+}
+```
+
 ## Accessing a remote server:
 We use a service called HttpClient that exists in the HttpClientModule module, which we need to import into our module.
 
