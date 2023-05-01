@@ -183,27 +183,82 @@ public display(myLocation: HTMLSelectElement): void {
     alert("Location: " + myLocation.value);
 }
 
-// Third access:
+// Third access - get value from script using @ViewChild annotation:
 @ViewChild("myLocation")
 public myLocationWrapper: ElementRef<HTMLSelectElement>;
+
 public show() : void {
     const myLocation = this.myLocationWrapper.nativeElement;
     alert("Location: " + myLocation.value);
 }
 ```
 
-## Accessing a remote server:
-We use a service called HttpClient that exists in the HttpClientModule module, which we need to import into our module.
-
 ## Dependency Injection - DI
 This is a design pattern that allows the framework to provide us with a specific object required by the class we are building.
+
+```
 class CalculateSomething {
 // We need some system object…
 public constructor(theNeededObject: SomeUtility) { … }
-
 }
+```
+
 We request the object in the constructor of the class we are building.
 The framework should create the object from our class and inject the required object into it.
+So, we don't export singleton, since framework runs it automatically on load (because of DI).
+
+## Accessing a remote server:
+We use a service called HttpClient that exists in the HttpClientModule module, which we need to import into our module.
+In this example we build service that gets data from URL:
+* Note we use @Injectable annotation to make this object accessible in app scope.
+
+```
+@Injectable({
+    providedIn: "root" // Tells Angular to create an object from this class in the application scope
+})
+export class ProductsService {
+
+    // DI:
+    public constructor(private http: HttpClient) { } // Using access modifier is an ts feature to make this var accessible without the constructor
+
+    // Get all products: 
+    public async getAllProducts(): Promise<ProductModel[]> {
+
+        // Create an Observable which can get products from the server: 
+        const observable = this.http.get<ProductModel[]>(appConfig.productsUrl);
+
+        // Convert this observable into Promise so we can await on it:
+        const products = await firstValueFrom(observable);
+
+        // Return the response products:
+        return products;
+    }
+}
+
+```
+
+Then, use it in component:
+* Note we use here OnInit function that is lifecycle func, and similar to useEffect
+
+```
+export class ProductListComponent implements OnInit {
+
+    public products: ProductModel[];
+
+    public constructor(private productsService: ProductsService) { }
+
+    public async ngOnInit() { // Like React's componentDidMount / useEffect
+        try {
+            this.products = await this.productsService.getAllProducts();
+        }
+        catch (err: any) {
+            alert(err.message);
+        }
+    }
+
+}
+```
+
 
 ## Observable
 This is an object that comes from an external library that also exists in Angular called "rxjs".
