@@ -110,6 +110,44 @@ public date = new Date();
 You can read more here:
 https://angular.io/api?type=pipe
 
+## Routing
+1. Place router special tag whenever we want it (usually in site layout section):
+```
+<main>
+  <router-outlet></router-outlet>
+</main>
+```
+Now, we will see the routed pages in this section.
+
+2. Config the routes in app-routing.module.ts
+It should look like this:
+
+```
+const routes: Routes = [
+    { path: "home", component: HomeComponent },
+    { path: "list", component: ListComponent },
+    { path: "insert", component: InsertComponent },
+    // Default route
+    { path: "", redirectTo: "/home", pathMatch: "full" },
+    // Page not found
+    { path: "**", component: PageNotFoundComponent }
+];
+
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+3. Assign navigate links to trigger routes, using routerLink (for example, from nav-bar):
+```
+    <a routerLink="/home">Home</a>
+    <span> | </span>
+    <a routerLink="/list">List</a>
+    <span> | </span>
+    <a routerLink="/insert">Insert</a>
+```
+
 ## Template Reference Variable
 
 A unique identifier we give to a tag.
