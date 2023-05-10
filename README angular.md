@@ -2,17 +2,18 @@
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Annotations](#annotations)
-- [Module](#module)
-- [Data Binding](#data-binding)
-- [Directive](#directive)
-- [Pipe](#pipe)
-- [Routing](#routing)
-- [TVR-Template Reference Variable](#TVR-template-reference-variable)
-- [Dependency Injection](#dependency-injection)
-- [Forms and validation](#Forms-and-validations)
-- [Accessing a Remote Server](#accessing-a-remote-server)
+1 [Installation](#installation)
+2 [Annotations](#annotations)
+3 [Module](#module)
+4 [Data Binding](#data-binding)
+    -[Emit events from child to parent](#Emitting-events-from-child-to-parent)
+5 [Directive](#directive)
+6 [Pipe](#pipe)
+7 [Routing](#routing)
+8 [TVR-Template Reference Variable](#TVR-template-reference-variable)
+9 [Dependency Injection](#dependency-injection)
+10 [Forms and validation](#Forms-and-validations)
+11 [Accessing a Remote Server](#accessing-a-remote-server)
   
 ## Installation
 
@@ -89,6 +90,38 @@ export class HomeComponent {
     <p>{{textToSearch}}</p>
 
 </div>
+
+```
+
+### ***Emitting events from child to parent***
+
+You can create event and pass data in child component, and catch those events in parent component.
+
+***In child component:***
+
+1. Create event in child component(Note that we must to use @Output() annotation):
+```
+    @Output()
+    public deleteMe = new EventEmitter<number>(); // deleteMe is the event name
+
+```
+2. Create handler func to get data and trigger event (it will be triggered from html btn):
+```
+public async deleteBook() {
+        this.deleteMe.emit(this.book.bookId);
+    }
+```
+***In parent component:***
+
+3. Add attribute with the name of event in parent HTML section:
+```
+   <app-book-card *ngFor="let b of books" [book]="b" (deleteMe)="deleteThisBook($event)"></app-book-card>
+```
+4. Catch this event in parent handler func:
+```
+   public async deleteThisBook(bookId: number) {
+      /// Do stuff with data
+    }
 
 ```
 
