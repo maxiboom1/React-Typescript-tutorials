@@ -2,18 +2,18 @@
 
 ## Table of Contents
 
-1 [Installation](#installation)
-2 [Annotations](#annotations)
-3 [Module](#module)
-4 [Data Binding](#data-binding)
+1. [Installation](#installation)
+2. [Annotations](#annotations)
+3. [Module](#module)
+4. [Data Binding](#data-binding)
     -[Emit events from child to parent](#Emitting-events-from-child-to-parent)
-5 [Directive](#directive)
-6 [Pipe](#pipe)
-7 [Routing](#routing)
-8 [TVR-Template Reference Variable](#TVR-template-reference-variable)
-9 [Dependency Injection](#dependency-injection)
-10 [Forms and validation](#Forms-and-validations)
-11 [Accessing a Remote Server](#accessing-a-remote-server)
+5. [Directive](#directive)
+6. [Pipe](#pipe)
+7. [Routing](#routing)
+8. [TVR-Template Reference Variable](#TVR-template-reference-variable)
+9. [Dependency Injection](#dependency-injection)
+10. [Forms and validation](#Forms-and-validations)
+11. [Accessing a Remote Server](#accessing-a-remote-server)
   
 ## Installation
 
