@@ -7,6 +7,7 @@
 3. [Module](#module)
 4. [Data Binding](#data-binding)
     - [Emit events from child to parent](#Emitting-events-from-child-to-parent)
+    - [Pass data to child](#pass-data-to-child)
 5. [Directive](#directive)
 6. [Pipe](#pipe)
 7. [Routing](#routing)
@@ -122,6 +123,21 @@ public async deleteBook() {
    public async deleteThisBook(bookId: number) {
       /// Do stuff with data
     }
+
+```
+
+### ***Pass data to child***
+
+1. Create child component, and config input data it should get within the component(Note that we must use @Input() annotation):
+
+```
+    @Input()
+    public book: BookModel;
+```
+
+2. Pass data to child using HTML attribute:
+```
+    <app-book-card *ngFor="let b of books" [book]="b" (deleteMe)="deleteThisBook($event)"></app-book-card> // [book] is the name, and "b" is the data
 
 ```
 
