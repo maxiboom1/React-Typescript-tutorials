@@ -6,7 +6,7 @@
 2. [Annotations](#annotations)
 3. [Module](#module)
 4. [Data Binding](#data-binding)
-    -[Emit events from child to parent](#Emitting-events-from-child-to-parent)
+        -[Emit events from child to parent](#Emitting-events-from-child-to-parent)
 5. [Directive](#directive)
 6. [Pipe](#pipe)
 7. [Routing](#routing)
