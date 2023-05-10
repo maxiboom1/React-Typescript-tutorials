@@ -15,7 +15,7 @@
 10. [Forms and validation](#Forms-and-validations)
 11. [Accessing a Remote Server](#accessing-a-remote-server)
   
-## Installation
+## ***Installation***
 
 ```
 npm install -g @angular/cli => Globally, once per PC 
@@ -30,7 +30,7 @@ ng g c component/home-area/home --skip tests => Creates new component structure
 
 **[⬆ back to top](#table-of-contents)**
 
-## Annotation
+## ***Annotation***
 
 This is a command that we write above some programming element such as a class, method, data-member, etc., that indicates something to the framework.
 Every annotation starts with "@".
@@ -38,7 +38,7 @@ For example, "@Component" is an annotation that is written above a class and ind
 
 **[⬆ back to top](#table-of-contents)**
 
-## Module
+## ***Module***
 
 This is a wrapper for components.
 In Angular, a component should belong to one and only one module.
@@ -46,22 +46,22 @@ The AppModule is the main module that exists.
 
 **[⬆ back to top](#table-of-contents)**
 
-## Data Binding
+## ***Data Binding***
 
 A connection between a source and a target. Any changes made in the source affect the target.
 There are four types of binding:
 
-1. **Property Binding** - a binding between a variable in the component class and an HTML attribute. 
+1. ***Property Binding*** - a binding between a variable in the component class and an HTML attribute. 
 Any change in the variable affects the attribute.
 
-2. **Event Binding** - a binding between an HTML tag event and a function in the component class. The event triggers the function.
+2. ***Event Binding*** - a binding between an HTML tag event and a function in the component class. The event triggers the function.
 
-3. **Two-Way Binding** (also called banana in the box [()]) - a binding between an input box and a variable. 
+3. ***Two-Way Binding*** (also called banana in the box [()]) - a binding between an input box and a variable. 
 Changing the input box value will immediately update the variable value. 
 Changing the variable value will display it in the input box.
 ** Note that to use [(ngModel)] we have to import FormModule in app.module config file 
 
-4. **Interpolation** - displaying data from the component class directly within the HTML.
+4. ***Interpolation*** - displaying data from the component class directly within the HTML.
 
 Examples:
 ```
@@ -127,18 +127,18 @@ public async deleteBook() {
 
 **[⬆ back to top](#table-of-contents)**
 
-## Directive
+## ***Directive***
 
 Custom HTML Attribute is an attribute written in Angular that behaves like an HTML attribute.
 
 There are two types of directives:
 
-1. **Attribute Directive** - changes made to the tag itself, such as structural changes, design changes, and changes in behavior.
+1. ***Attribute Directive*** - changes made to the tag itself, such as structural changes, design changes, and changes in behavior.
 ```
 public style = {color: Math.random() > 0.5 ? "red" : "blue"}
 <span [ngStyle]="style">Our Products</span>
 ```
-2. **Structural Directive** - an attribute that instructs how many times to insert the tag into the DOM. It can be 0 or more times. 
+2. ***Structural Directive*** - an attribute that instructs how many times to insert the tag into the DOM. It can be 0 or more times. 
 Every Structural Directive starts with an asterisk (*).
 ```
 // Render or not => *ngIf
@@ -150,7 +150,7 @@ Every Structural Directive starts with an asterisk (*).
 
 **[⬆ back to top](#table-of-contents)**
 
-## Pipe
+## ***Pipe***
 
 The change that occurs on the value displayed in Interpolation.
 In practice, this is a function that receives the value and returns a different value.
@@ -166,7 +166,7 @@ https://angular.io/api?type=pipe
 
 **[⬆ back to top](#table-of-contents)**
 
-## Routing
+## ***Routing***
 1. Place router special tag whenever we want it (usually in site layout section):
 ```
 <main>
@@ -206,7 +206,7 @@ export class AppRoutingModule { }
 
 **[⬆ back to top](#table-of-contents)**
 
-## TVR-Template Reference Variable 
+## ***TVR-Template Reference Variable*** 
 
 A unique identifier we give to a tag.
 It is known not to give any id to tags in a component-based project.
@@ -245,7 +245,7 @@ public show() : void {
 
 **[⬆ back to top](#table-of-contents)**
 
-## Dependency Injection
+## ***Dependency Injection***
 DI - This is a design pattern that allows the framework to provide us with a specific object required by the class we are building.
 
 ```
@@ -261,7 +261,7 @@ So, we don't export singleton, since framework runs it automatically on load (be
 
 **[⬆ back to top](#table-of-contents)**
 
-## Forms and validations
+## ***Forms and validations***
 
 Angular has its own validations mechanism. However, you can bypass them, and use regular HTML5 validations, with "ngNativeValidate" attribute:
 ```
@@ -276,7 +276,7 @@ Angular has its own validations mechanism. However, you can bypass them, and use
 
 **[⬆ back to top](#table-of-contents)**
 
-## Accessing a remote server:
+## ***Accessing a remote server***
 We use a service called HttpClient that exists in the HttpClientModule module, which we need to import into our module.
 In this example we build service that gets data from URL:
 * Note we use @Injectable annotation to make this object accessible in app scope.
@@ -330,7 +330,7 @@ export class ProductListComponent implements OnInit {
 
 **[⬆ back to top](#table-of-contents)**
 
-## Observable
+## ***Observable***
 This is an object that comes from an external library that also exists in Angular called "rxjs".
 This object is similar to a Promise but much more powerful and capable.
 A Promise is used to run asynchronous code and report success or failure.
