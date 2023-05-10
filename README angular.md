@@ -11,6 +11,7 @@
 - [Routing](#routing)
 - [TVR-Template Reference Variable](#TVR-template-reference-variable)
 - [Dependency Injection](#dependency-injection)
+- [Forms and validation](#Forms-and-validations)
 - [Accessing a Remote Server](#accessing-a-remote-server)
   
 ## Installation
@@ -224,6 +225,21 @@ public constructor(theNeededObject: SomeUtility) { … }
 We request the object in the constructor of the class we are building.
 The framework should create the object from our class and inject the required object into it.
 So, we don't export singleton, since framework runs it automatically on load (because of DI).
+
+**[⬆ back to top](#table-of-contents)**
+
+## Forms and validations
+
+Angular has its own validations mechanism. However, you can bypass them, and use regular HTML5 validations, with "ngNativeValidate" attribute:
+```
+    <form ngNativeValidate>
+    
+        <input name="search" type="search" required> <!-- required will work here! -->
+
+        <button (click)= "search()">Search</button>
+    
+    </form>
+```
 
 **[⬆ back to top](#table-of-contents)**
 
