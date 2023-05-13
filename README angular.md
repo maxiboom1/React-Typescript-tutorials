@@ -11,7 +11,7 @@
 5. [Directive](#directive)
 6. [Pipe](#pipe)
 7. [Routing](#routing)
-8. [TVR-Template Reference Variable](#TVR-template-reference-variable)
+8. [TRV-Template Reference Variable](#TRV-template-reference-variable)
 9. [Dependency Injection](#dependency-injection)
 10. [Forms and validation](#Forms-and-validations)
 11. [Accessing a Remote Server](#accessing-a-remote-server)
@@ -231,14 +231,14 @@ export class AppRoutingModule { }
 
 **[⬆ back to top](#table-of-contents)**
 
-## ***TVR-Template Reference Variable*** 
+## ***TRV-Template Reference Variable*** 
 
 A unique identifier we give to a tag.
 It is known not to give any id to tags in a component-based project.
 This is an invented word written with the # sign. Behind the scenes, this is the actual object in the DOM that represents the tag.
 This object can be accessed from another component in the HTML, from TypeScript, or sent to a function in TypeScript.
 
-In this example - we get selector value access using TVR in 3 different ways :
+In this example - we get selector value access using TRV in 3 different ways :
 
 ```
 <select #myLocation (change)="display(myLocation)">
