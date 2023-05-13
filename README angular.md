@@ -12,10 +12,11 @@
 6. [Pipe](#pipe)
 7. [Routing](#routing)
 8. [TRV-Template Reference Variable](#TRV-template-reference-variable)
-9. [Dependency Injection](#dependency-injection)
-10. [Forms and validation](#Forms-and-validations)
-11. [Accessing a Remote Server](#accessing-a-remote-server)
-12. [Observable](#observable)
+9. [Lifecycle hooks](#Lifecycle-hooks)
+10. [Dependency Injection](#dependency-injection)
+11. [Forms and validation](#Forms-and-validations)
+12. [Accessing a Remote Server](#accessing-a-remote-server)
+13. [Observable](#observable)
   
 ## ***Installation***
 
@@ -267,6 +268,26 @@ public show() : void {
     alert("Location: " + myLocation.value);
 }
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+## Lifecycle hooks
+
+The lifecycle hooks in Angular are special methods that enable you to access specific moments in the lifecycle of a component, directive, or service. These hooks offer a way to execute actions based on the state of the application and its components. Some of the commonly used hooks are ngOnChanges, ngOnInit, ngOnDestroy, and more.
+
+To implement a lifecycle hook in Angular:
+```
+export class MyComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+    // initialization logic goes here
+  }
+
+}
+```
+In this example, the ngOnInit() hook is used to execute code that initializes the component properties.
 
 **[⬆ back to top](#table-of-contents)**
 
