@@ -26,7 +26,7 @@ ng new my-angular-project --skip-tests => New project
 
 ng serve => start angular app (write it in package.json start)
 
-ng g c component/home-area/home --skip tests => Creates new component structure
+ng g c components/data-area/card --skip-tests => Creates new component structure
 
 ```
 
