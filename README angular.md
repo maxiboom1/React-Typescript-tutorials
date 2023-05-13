@@ -15,6 +15,7 @@
 9. [Dependency Injection](#dependency-injection)
 10. [Forms and validation](#Forms-and-validations)
 11. [Accessing a Remote Server](#accessing-a-remote-server)
+12. [Observable](#observable)
   
 ## ***Installation***
 
@@ -220,6 +221,14 @@ export class AppRoutingModule { }
     <a routerLink="/insert">Insert</a>
 ```
 
+4. To navigate from code, add Router from '@angular/router' to component constructor (DI), then use it's navigateByUrl method:
+```
+   public constructor( private router: Router ) { }
+
+   this.router.navigateByUrl("/yourUrl");
+```
+
+
 **[⬆ back to top](#table-of-contents)**
 
 ## ***TVR-Template Reference Variable*** 
@@ -279,6 +288,52 @@ So, we don't export singleton, since framework runs it automatically on load (be
 
 ## ***Forms and validations***
 
+### Handling form 
+
+1. Create object that will include the data from the form:
+
+```
+private books: BookModel = new BookModel();
+```
+2. In HTML, each input element must have name and ngModel that binds it to the object we created:
+
+```
+<input type="text" name="bookName" [(ngModel)]="book.bookName">
+```
+
+3. Add ngSubmit on form level, and bind it to handling function:
+
+```
+    <form (ngSubmit)="send()">
+    <!-- Your form inputs tags -->
+    </form>
+```
+4. To add image, we need to set Template reference variable to image tag:
+```
+<input type="file" accept="image/*" #myImage>
+```
+Then, create variable that that synced with this image:
+```
+@ViewChild("#myImage")
+const myImageContainer: ElementRef<HTMLInputElement>
+```
+And then, add it to our object (on submit):
+```
+this.book.image = this.myImageContainer.nativeElement.files[0];
+```
+
+Since HTML won't allow sending images, we need to create FormData() and copy our object to it (We should do it in sending service):
+```
+const formData = new FormData();
+formData.append("bookName", book.bookName);
+formData("bookPrice", book.price.toString());
+formData.append("image", book.image); 
+
+const observable = this.http.post<BookModel>(appConfig.booksUrl, formData);
+await firstValueFrom(observable);
+```
+
+### Native HTML validation in angular
 Angular has its own validations mechanism. However, you can bypass them, and use regular HTML5 validations, with "ngNativeValidate" attribute:
 ```
     <form ngNativeValidate>
