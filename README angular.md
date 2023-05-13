@@ -11,6 +11,7 @@
 5. [Directive](#directive)
 6. [Pipe](#pipe)
 7. [Routing](#routing)
+    - [Route parameter](#route-parameter)
 8. [TRV-Template Reference Variable](#TRV-template-reference-variable)
 9. [Lifecycle hooks](#Lifecycle-hooks)
 10. [Dependency Injection](#dependency-injection)
@@ -228,7 +229,20 @@ export class AppRoutingModule { }
 
    this.router.navigateByUrl("/yourUrl");
 ```
+### ***Route parameter***
+To pass router parameter, add it in Routes:
+```
+{ path: "edit/:id", component: EditComponent },
+```
+Then, use activatedRoute service to get the data:
+```
+constructor(private route: ActivatedRoute) { }
 
+ngOnInit() {
+    const id = +this.route.snapshot.params["id"];
+}
+
+```
 
 **[⬆ back to top](#table-of-contents)**
 
