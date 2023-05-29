@@ -208,9 +208,13 @@ server.use(preventXss);
 
 ## **IDOR**
 IDOR stands for Insecure Direct Object Reference. 
+
 It refers to a situation where an attacker can access other resources, references, or data by modifying the identifier or reference in the request.
+
 For example, user 1 are going to edit his personal data - its site url is: /user/edit/4 (4 is the userId). 
+
 Then he may access to other user data and change it, just by change the userId. 
+
 To prevent it, we can build custom middleware that compares userId from token to userId from route. Here is the code example of how it may look:
 
 ```
