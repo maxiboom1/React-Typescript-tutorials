@@ -33,6 +33,8 @@ If a crash occurs, the crash message contains sensitive information about our sy
 
 In the Production environment, we provide a general message to the Front for system crashes (5xx errors).
 
+**[⬆ back to top](#secure-coding)**
+
 ## **CORS**
 Cross-Origin Resource Sharing is a policy implemented by browsers that states the following: If the Front-end performs an AJAX request to a Back-end that is not hosted on the same origin as the Front-end, the browser initiates a pre-flight request to verify and authorize the actual request made to the server.
 
@@ -50,6 +52,8 @@ server.use(cors()); // Enable cors for any frontend.
 server.use(cors({ origin: ["http://localhost:3000", "http://some-other-site.com"] })); // Enable cors only for those websites.
 server.use(cors({ origin: "http://localhost:3000" })); // Enable cors only for this frontend.
 ```
+
+**[⬆ back to top](#secure-coding)**
 
 ## **Auth**
 
@@ -97,6 +101,8 @@ function hashPassword(plainText: string): string {
 - If we want logged-in users to remain logged in even after closing the browser, we store the token in localStorage.
 - If we don't want logged-in users to remain logged in after closing the browser, we store the token in sessionStorage.
 - Sometimes it is advisable to display a "Remember Me" checkbox. Checking the checkbox will store the token in localStorage, while leaving it unchecked will store the token in sessionStorage.
+
+**[⬆ back to top](#secure-coding)**
 
 ## **SQL Injection**
 "Injecting" a piece of SQL query into a text/input/channel/Query String, etc., that is combined with the original query and alters its intended meaning.
@@ -150,6 +156,8 @@ function execute(sql: string, values?: any[]): Promise<any> {
 
 ```
 
+**[⬆ back to top](#secure-coding)**
+
 ## **XSS Attack**
 
 XSS stands for Cross Site Scripting. It refers to a situation where our website allows users to input data that is later displayed in the browser, usually to all users.
@@ -196,6 +204,8 @@ And register it as middleware:
 server.use(preventXss);
 ```
 
+**[⬆ back to top](#secure-coding)**
+
 ## **IDOR**
 IDOR stands for Insecure Direct Object Reference. 
 It refers to a situation where an attacker can access other resources, references, or data by modifying the identifier or reference in the request.
@@ -221,6 +231,8 @@ jwt.verify(token, jwtSecretKey, (err: JsonWebTokenError, container: any) => {
 });
 ```
  
+**[⬆ back to top](#secure-coding)**
+
 ## **DoS**
 
 DoS stands for Denial of Service. It is a situation where an attacker continuously sends a large amount of data or performs repetitive actions on a website, overwhelming its resources and preventing regular users from accessing it.
@@ -231,9 +243,13 @@ Installation:
 
 ```npm i express-rate-limit```
 
+**[⬆ back to top](#secure-coding)**
+
 ## **DDoS**
 
 DDoS stands for Distributed Denial of Service Attack. It is an attack in which the attacker modifies the IP address in each request. The server then sees the requests coming from different users and does not block them as it would in a DoS attack. To date, there is no absolute protection against such attacks. There are products that can be installed on servers to monitor statistics and make educated guesses about whether multiple requests are legitimate or a DDoS attack.
+
+**[⬆ back to top](#secure-coding)**
 
 ## **Protection against Bots**
 BOT is short for ROBOT. It refers to software or scripts that perform actions as if a human had done them, such as posting comments or opening accounts.
@@ -247,6 +263,8 @@ Installation in Front-end:
 ```npm i react-google-recaptcha ```
 
 ```npm i @types/react-google-recaptcha```
+
+**[⬆ back to top](#secure-coding)**
 
 ## **Helmet**
 Helmet is a middleware that helps prevent problematic or dangerous headers. It adds an extra layer of security to your application.
