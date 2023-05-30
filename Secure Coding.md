@@ -247,6 +247,18 @@ Installation:
 
 ```npm i express-rate-limit```
 
+Code example:
+
+```
+// Prevent DoS attack:
+server.use(expressRateLimit({
+    windowMs: 1000, // Window time to count requests.
+    max: 10, // Max requests allowed in that window.
+    message: "Are you a hacker?" // Optional message
+}));
+
+```
+
 **[⬆ back to top](#secure-coding)**
 
 ## **DDoS**
