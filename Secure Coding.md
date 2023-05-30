@@ -16,7 +16,9 @@
 ### **Basics**
     
 Writing correct code for a security perspective.  
+
 This is something that programmers must do.  
+
 There are several basic principles that we should implement in the code we write.  
 
 **[⬆ back to top](#secure-coding)**
@@ -36,7 +38,11 @@ In the Production environment, we provide a general message to the Front for sys
 **[⬆ back to top](#secure-coding)**
 
 ## **CORS**
-Cross-Origin Resource Sharing is a policy implemented by browsers that states the following: If the Front-end performs an AJAX request to a Back-end that is not hosted on the same origin as the Front-end, the browser initiates a pre-flight request to verify and authorize the actual request made to the server.
+Cross-Origin Resource Sharing is a policy implemented by browsers that states the following: 
+
+If the Front-end performs an AJAX request to a Back-end that is not hosted on the same origin as the Front-end, 
+
+the browser initiates a pre-flight request to verify and authorize the actual request made to the server.
 
 CORS should only be allowed for our own website if the data belongs exclusively to us, and CORS should not be granted to the entire world if the data is not intended for everyone.
 
@@ -65,7 +71,12 @@ In the world of REST APIs, the commonly accepted practice today is to use JWT (J
 - Passwords and other sensitive information should not be returned within the token!
 - Storing passwords in plain text in the database is prohibited (password that stored as-is)!
 However, passwords are not encrypted. Encryption refers to a reversible operation on the code that involves an algorithm for decryption. 
-Passwords are "hashed." Hashing means a one-way code transformation. There is no algorithm that returns the original string from a hash string. Additionally, the same input will always produce the same hash (for the same hashing algorithm) that is unique only to the input string that created it.
+
+Passwords are "hashed." Hashing means a one-way code transformation. There is no algorithm that returns the original string from a hash string. 
+
+Additionally, the same input will always produce the same hash (for the same hashing algorithm) that is unique only to the input string that created it.
+
+
 - It is mandatory to protect against overly simple passwords:
   - Users should be required to enter a strong password (lowercase letter + uppercase letter + digit + special character, etc.).
   - Salt should be applied to the original password and then hashed.
@@ -99,7 +110,9 @@ function hashPassword(plainText: string): string {
 **localStorage or sessionStorage**
 
 - If we want logged-in users to remain logged in even after closing the browser, we store the token in localStorage.
+
 - If we don't want logged-in users to remain logged in after closing the browser, we store the token in sessionStorage.
+
 - Sometimes it is advisable to display a "Remember Me" checkbox. Checking the checkbox will store the token in localStorage, while leaving it unchecked will store the token in sessionStorage.
 
 **[⬆ back to top](#secure-coding)**
@@ -234,6 +247,14 @@ jwt.verify(token, jwtSecretKey, (err: JsonWebTokenError, container: any) => {
     resolve(true);
 });
 ```
+
+### Assign uniq uuid to users
+
+Another technique to prevent IDOR is to assign a UUID (Universally Unique Identifier) to each user in addition to their regular ID. 
+
+Instead of using the simple ID, we can pass the UUID to the route, making user identification non-linear and difficult to guess.
+
+By combining these two techniques, we can achieve a high level of defense against IDOR access.
  
 **[⬆ back to top](#secure-coding)**
 
@@ -263,7 +284,15 @@ server.use(expressRateLimit({
 
 ## **DDoS**
 
-DDoS stands for Distributed Denial of Service Attack. It is an attack in which the attacker modifies the IP address in each request. The server then sees the requests coming from different users and does not block them as it would in a DoS attack. To date, there is no absolute protection against such attacks. There are products that can be installed on servers to monitor statistics and make educated guesses about whether multiple requests are legitimate or a DDoS attack.
+DDoS stands for Distributed Denial of Service Attack. 
+
+It is an attack in which the attacker modifies the IP address in each request. 
+
+The server then sees the requests coming from different users and does not block them as it would in a DoS attack. 
+
+To date, there is no absolute protection against such attacks. 
+
+There are products that can be installed on servers to monitor statistics and make educated guesses about whether multiple requests are legitimate or a DDoS attack.
 
 **[⬆ back to top](#secure-coding)**
 
@@ -272,7 +301,9 @@ BOT is short for ROBOT. It refers to software or scripts that perform actions as
 
 Protection: CAPTCHA
 
-CAPTCHA stands for Completely Automated Public Turing test to tell Computers and Humans Apart. The popular CAPTCHA solution today is reCAPTCHA by Google, which uses AI to verify the mouse movement and keyboard input of the user to determine if they are a real human.
+CAPTCHA stands for Completely Automated Public Turing test to tell Computers and Humans Apart. 
+
+The popular CAPTCHA solution today is reCAPTCHA by Google, which uses AI to verify the mouse movement and keyboard input of the user to determine if they are a real human.
 
 Installation in Front-end:
 
@@ -283,4 +314,6 @@ Installation in Front-end:
 **[⬆ back to top](#secure-coding)**
 
 ## **Helmet**
-Helmet is a middleware that helps prevent problematic or dangerous headers. It adds an extra layer of security to your application.
+Helmet is a middleware that helps prevent problematic or dangerous headers. 
+
+It adds an extra layer of security to your application.
