@@ -62,12 +62,12 @@ server.use(cors({ origin: "http://localhost:3000" })); // Enable cors only for t
 
 **[⬆ back to top](#secure-coding)**
 
-## **Auth**
+## *****Auth*****
 
 Authentication & Authorization
 In the world of REST APIs, the commonly accepted practice today is to use JWT (JSON Web Tokens).
 
-**Passwords**
+*****Passwords*****
 
 - Passwords and other sensitive information should not be returned within the token!
 - Storing passwords in plain text in the database is prohibited (password that stored as-is)!
@@ -108,7 +108,7 @@ function hashPassword(plainText: string): string {
 
 ```
 
-**localStorage or sessionStorage**
+*****localStorage or sessionStorage*****
 
 - If we want logged-in users to remain logged in even after closing the browser, we store the token in localStorage.
 
@@ -118,7 +118,7 @@ function hashPassword(plainText: string): string {
 
 **[⬆ back to top](#secure-coding)**
 
-## **SQL Injection**
+## *****SQL Injection*****
 "Injecting" a piece of SQL query into a text/input/channel/Query String, etc., that is combined with the original query and alters its intended meaning.
 
 Example with a username:  
@@ -172,7 +172,7 @@ function execute(sql: string, values?: any[]): Promise<any> {
 
 **[⬆ back to top](#secure-coding)**
 
-## **XSS Attack**
+## *****XSS Attack*****
 
 XSS stands for Cross Site Scripting. It refers to a situation where our website allows users to input data that is later displayed in the browser, usually to all users.
 
@@ -220,7 +220,7 @@ server.use(preventXss);
 
 **[⬆ back to top](#secure-coding)**
 
-## **IDOR**
+## *****IDOR*****
 IDOR stands for Insecure Direct Object Reference. 
 
 It refers to a situation where an attacker can access other resources, references, or data by modifying the identifier or reference in the request.
@@ -249,7 +249,7 @@ jwt.verify(token, jwtSecretKey, (err: JsonWebTokenError, container: any) => {
 });
 ```
 
-### Assign uniq uuid to users
+### ***Assign uniq uuid to users***
 
 Another technique to prevent IDOR is to assign a UUID (Universally Unique Identifier) to each user in addition to their regular ID. 
 
@@ -259,7 +259,7 @@ By combining these two techniques, we can achieve a high level of defense agains
  
 **[⬆ back to top](#secure-coding)**
 
-## **DoS**
+## *****DoS*****
 
 DoS stands for Denial of Service. It is a situation where an attacker continuously sends a large amount of data or performs repetitive actions on a website, overwhelming its resources and preventing regular users from accessing it.
 
@@ -283,7 +283,7 @@ server.use(expressRateLimit({
 
 **[⬆ back to top](#secure-coding)**
 
-## **DDoS**
+## *****DDoS*****
 
 DDoS stands for Distributed Denial of Service Attack. 
 
@@ -297,7 +297,7 @@ There are products that can be installed on servers to monitor statistics and ma
 
 **[⬆ back to top](#secure-coding)**
 
-## **Protection against Bots**
+## *****Protection against Bots*****
 BOT is short for ROBOT. It refers to software or scripts that perform actions as if a human had done them, such as posting comments or opening accounts.
 
 Protection: CAPTCHA
@@ -314,7 +314,7 @@ Installation in Front-end:
 
 **[⬆ back to top](#secure-coding)**
 
-## **Helmet**
+## *****Helmet*****
 Helmet is a middleware that helps prevent problematic or dangerous headers. 
 
 It adds an extra layer of security to your application.
