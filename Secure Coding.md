@@ -249,7 +249,7 @@ jwt.verify(token, jwtSecretKey, (err: JsonWebTokenError, container: any) => {
 });
 ```
 
-### ***Assign uniq uuid to users***
+### ***Assign a unique UUID to each user***
 
 Another technique to prevent IDOR is to assign a UUID (Universally Unique Identifier) to each user in addition to their regular ID. 
 
