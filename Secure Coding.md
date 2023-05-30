@@ -1,7 +1,7 @@
 
 # Table of Contents
 
-## Secure coding
+## ***Secure coding***
   1. [Basics](#Basics)
   2. [Logs](#logs)
   3. [CORS](#cors)
@@ -14,7 +14,7 @@
   10. [Bots](#protection-against-bots)
   11. [Helmet](#helmet)
 
-### **Basics**
+### *****Basics*****
     
 Writing correct code for a security perspective.  
 
@@ -24,11 +24,11 @@ There are several basic principles that we should implement in the code we write
 
 **[⬆ back to top](#secure-coding)**
 
-## **Logs**
+## *****Logs*****
 
 Documentation must be performed on the server-side by writing to a Log file. These logs capture errors that occurred on the server and sometimes record system actions.
 
-**Error Report on Production**
+***Error Report on Production***
 
 System errors in the Production environment should not be reported to the user.
 
@@ -38,7 +38,7 @@ In the Production environment, we provide a general message to the Front for sys
 
 **[⬆ back to top](#secure-coding)**
 
-## **CORS**
+## *****CORS*****
 Cross-Origin Resource Sharing is a policy implemented by browsers that states the following: 
 
 If the Front-end performs an AJAX request to a Back-end that is not hosted on the same origin as the Front-end, 
