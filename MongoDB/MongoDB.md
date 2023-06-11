@@ -27,6 +27,10 @@ ORM stands for Object Relational Mapper. It is a library that allows representin
 
 # ***Import/Export***
 
+1. We need to install MongoDB Command Line Database Tools (https://www.mongodb.com/try/download/database-tools).
+2. Extract tools in C:\Program Files\MongoDB\Server\6.0\bin
+3. Export: Open terminal on C:\Program Files\MongoDB\Server\6.0\bin>mongodump -d YourDataBaseName  dump/YourDataBaseName. This command will create "dump" folder and inside folder with desired database.
+4. 
 
 
 ## ***Mongoose***
