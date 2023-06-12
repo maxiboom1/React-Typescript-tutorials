@@ -21,6 +21,8 @@ MongoDB:
 - Rapid development and prototyping: MongoDB's flexible schema allows for faster development iterations
 - Real-time analytics and data processing: MongoDB's support for flexible data models and its ability to store and process large volumes of data make it a good choice for real-time analytics and data processing scenarios
 
+Ultimately, the decision between MySQL and MongoDB depends on your specific project requirements, data structure, scalability needs, and the development team's familiarity with the database technology.
+
 
 # ***Installation***
 The native mongoDB manager software is Compass, and it can be installed as an option in mongoDB installation pack.
