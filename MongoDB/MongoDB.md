@@ -179,4 +179,116 @@ async function deleteProduct(_id: string): Promise<void> {
 }
 ```
 
+## ***Complex queries***
 
+Use the following formula: 
+```ProductModel.find(filter, projection, options).exec()``` 
+where filter is similar to sql 'WHERE', projection is similar to sql 'SELECT', and options is other manipulations, such sorting, skipping etc...
+
+### ***Mongo Query Language (MQL) ***
+Mongo Query Language (MQL) is the query language used in MongoDB. 
+MQL provides a rich set of operators to perform various operations on data. 
+Here are some commonly used MQL operators:
+
+<u>**Comparison Operators:**</u>
+
+**$eq:** Matches values that are equal to a specified value.
+
+**$ne:** Matches values that are not equal to a specified value.
+
+**$gt:** Matches values that are greater than a specified value.
+
+**$gte:** Matches values that are greater than or equal to a specified value.
+
+**$lt:** Matches values that are less than a specified value.
+
+**$lte:** Matches values that are less than or equal to a specified value.
+
+
+<u>**Logical Operators:**</u>
+
+**$and:** Joins query clauses with a logical AND operator.
+
+**$or:** Joins query clauses with a logical OR operator.
+
+**$not:** Inverts the effect of a query expression.
+
+**$nor:** Joins query clauses with a logical NOR operator.
+
+
+<u>**Element Operators:**</u>
+
+**$exists:** Matches documents that have the specified field.
+
+**$type:** Matches documents based on the BSON data type of a field.
+
+
+<u>**Array Operators:**</u>
+
+**$in:** Matches any of the values specified in an array.
+
+**$nin:** Matches none of the values specified in an array.
+
+**$all:** Matches arrays that contain all the specified elements.
+
+**$elemMatch:** Matches documents that contain an element matching the specified criteria.
+
+
+<u>**Evaluation Operators:**</u>
+
+**$regex:** Matches documents based on a regular expression pattern.
+
+**$text:** Performs text search on string fields.
+
+**$mod:** Performs a modulo operation on the value of a field.
+
+
+<u>**Array Update Operators:**</u>
+
+**$push:** Appends an element to an array field.
+
+**$pull:** Removes all occurrences of a value from an array field.
+
+**$addToSet:** Adds an element to an array field only if it doesn't already exist.
+
+
+## Query examples:
+
+Here is some examples, with similar queries in sql, for reference:
+
+* SELECT _id, name, price FROM products WHERE price = 10
+```
+ProductModel.find({ price: 10 }, ["name", "price"]).exec(); // "_id" will automatically included, so no need to it in array
+```
+* SELECT name, price FROM products WHERE price = 10
+```
+ProductModel.find({ price: 10 }, { _id: false, name: true, price: true }).exec();
+```
+
+* SELECT _id, name, price FROM products WHERE price >= 10 AND price <= 20
+```
+ProductModel.find({ price: { $gte: 10, $lte: 20 } }, ["name", "price"]).exec();
+```
+
+* SELECT _id, name, price FROM products WHERE price >= 10 AND price <= 20 ORDER BY price ASC
+```
+ProductModel.find({ price: { $gte: 10, $lte: 20 } }, ["name", "price"], { sort: { price: 1 } }).exec();
+```
+
+* SELECT _id, name, price FROM products WHERE price >= 10 AND price <= 20 ORDER BY price DESC
+```
+ProductModel.find({ price: { $gte: 10, $lte: 20 } }, ["name", "price"], { sort: { price: -1 } }).exec();
+```
+
+* SELECT _id, name, price FROM products WHERE price >= 10 AND price <= 20 ORDER BY price DESC, name ASC
+```
+ProductModel.find({ price: { $gte: 10, $lte: 20 } }, ["name", "price"], { sort: { price: -1, name: 1 } }).exec();
+```
+
+* SELECT name, price FROM products WHERE name LIKE 'ch%' ORDER BY price
+```
+ProductModel.find(
+        { name: { $regex: /^ch.*$/i } },
+        { _id: false, name: true, price: true },
+        { sort: { price: 1 } }).exec();
+```
