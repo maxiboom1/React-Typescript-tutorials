@@ -132,6 +132,33 @@ export const ProductModel = mongoose.model<IProductModel>("ProductModel", Produc
 
 # Create queries
 
-So, here is an example of queries based on CRAT API service: 
+Ok, so now we have dal and model with implemented ORM. 
+
+Lets see how to query data.
+
+* Get all data:
+```
+function getAllProducts(): Promise<IProductModel[]> {
+    return ProductModel.find().exec();
+}
+```
+* Get data by id:
+```
+async function addProduct(product: IProductModel): Promise<IProductModel> {
+    return product.save();
+}
+```
+* Update data by id (use 'returnOriginal:false' to get updated object):
+```
+async function updateProduct(product: IProductModel): Promise<IProductModel> {
+    return await ProductModel.findByIdAndUpdate(product._id, product, { returnOriginal: false }).exec();
+}
+```
+* Delete by id:
+```
+async function deleteProduct(_id: string): Promise<void> {
+    await ProductModel.findByIdAndDelete(_id).exec();
+}
+```
 
 
