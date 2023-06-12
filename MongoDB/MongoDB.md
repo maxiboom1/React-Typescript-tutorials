@@ -6,7 +6,7 @@ Databases are classified into two groups:
 1. Relational Databases: A type of database that contains tables and can also include links between tables. SQL language works on such databases. Examples include MySQL, SQL-Server, PostgreSQL, DB2, Access, and more.
 2. NoSQL Databases: This is a type of database that holds data in a different way than tables, often using JSON. SQL language does not work on such databases. It is generally much faster than relational databases. Examples include MongoDB, Elasticsearch, Cassandra, and more.
 
-# ***Mysql VS MongoDB***
+## ***Mysql VS MongoDB***
 
 When to use mysql, and when to use mongo?
 
