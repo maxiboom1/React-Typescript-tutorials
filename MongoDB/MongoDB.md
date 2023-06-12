@@ -182,7 +182,9 @@ async function deleteProduct(_id: string): Promise<void> {
 ## ***Complex queries***
 
 Use the following formula: 
+
 ```ProductModel.find(filter, projection, options).exec()``` 
+
 where filter is similar to sql 'WHERE', projection is similar to sql 'SELECT', and options is other manipulations, such sorting, skipping etc...
 
 ### ***Mongo Query Language (MQL)***
