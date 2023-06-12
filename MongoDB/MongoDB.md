@@ -185,7 +185,7 @@ Use the following formula:
 ```ProductModel.find(filter, projection, options).exec()``` 
 where filter is similar to sql 'WHERE', projection is similar to sql 'SELECT', and options is other manipulations, such sorting, skipping etc...
 
-### ***Mongo Query Language (MQL) ***
+### ***Mongo Query Language (MQL)***
 Mongo Query Language (MQL) is the query language used in MongoDB. 
 MQL provides a rich set of operators to perform various operations on data. 
 Here are some commonly used MQL operators:
