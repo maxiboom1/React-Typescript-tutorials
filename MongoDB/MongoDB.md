@@ -6,6 +6,22 @@ Databases are classified into two groups:
 1. Relational Databases: A type of database that contains tables and can also include links between tables. SQL language works on such databases. Examples include MySQL, SQL-Server, PostgreSQL, DB2, Access, and more.
 2. NoSQL Databases: This is a type of database that holds data in a different way than tables, often using JSON. SQL language does not work on such databases. It is generally much faster than relational databases. Examples include MongoDB, Elasticsearch, Cassandra, and more.
 
+# ***Mysql VS MongoDB***
+
+When to use mysql, and when to use mongo?
+
+Mysql:
+- Structured data
+- Complex joins, powerful capabilities for querying and manipulating data 
+- High scalability and performance. With proper configuration and database design, it can handle millions of rows efficiently
+
+MongoDB:
+- Flexible and unstructured data
+- Scalability and horizontal scaling
+- Rapid development and prototyping: MongoDB's flexible schema allows for faster development iterations
+- Real-time analytics and data processing: MongoDB's support for flexible data models and its ability to store and process large volumes of data make it a good choice for real-time analytics and data processing scenarios
+
+
 # ***Installation***
 The native mongoDB manager software is Compass, and it can be installed as an option in mongoDB installation pack.
 
