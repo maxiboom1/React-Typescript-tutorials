@@ -14,6 +14,7 @@
   10. [Create queries](#create-queries) 
   11. [Complex queries](#complex-queries)
   12. [Query examples](#query-examples)
+  13. [Virtual property - create relations between collections](#virtual-property)
   
 
 ## ***Introducing***
@@ -338,3 +339,54 @@ ProductModel.find(
 ```
 
 **[⬆ back to top](#table-of-contents)**
+
+
+## ***Virtual Property***
+
+In MongoDB, you can establish relationships between different collections using references or embedding. MongoDB does not have built-in support for traditional relational joins like SQL databases, but you can still achieve similar functionality using different approaches.
+
+A virtual property is a feature of a Model that does not exist in the Database, and we want MongoDB to populate it with the appropriate data according to certain rules. For example, based on a foreign key, we want to create an object that describes data existing in another table.
+
+Lets say, we have product and category collections, each product has categoryId property, and our goal is to get product with wrapped relevant category based on categoryId.
+
+1. We need to create virtual property:
+
+```
+// Virtual Property
+ProductSchema.virtual("category", {
+    ref: CategoryModel, // The Model object to create --> new CategoryModel(...)
+    localField: "categoryId", // In ProductModel which field belongs to this relation
+    foreignField: "_id", // In CategoryModel which field belongs to this relation
+    justOne: true //to return the virtual property as object that not wrapped in array
+});
+```
+
+2. Add "toJSON" and id=false properties in schema:
+
+```
+    versionKey: false,
+    toJSON: { virtuals: true }, // Allow to embed virtuals to result object
+    id: false // Do not return _id of virtual property (since we have it as "categoryId" in native object)
+```
+
+3. Use the query with "populate" method:
+
+```
+ProductModel.find().populate("category").exec(); // "category" is the virtual field name
+```
+
+4. Now the query will work. But the last thing to do is to adjust the IProductModel to include virtual property model:
+
+```
+export interface IProductModel extends mongoose.Document {
+    // We do not declare the _id
+    name: string;
+    price: number;
+    stock: number;
+    categoryId: mongoose.Schema.Types.ObjectId;
+    category: CategoryModel 
+}
+```
+
+**[⬆ back to top](#table-of-contents)**
+
