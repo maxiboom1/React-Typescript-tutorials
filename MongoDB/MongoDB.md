@@ -15,7 +15,7 @@
   11. [Complex queries](#complex-queries)
   12. [Query examples](#query-examples)
   13. [Virtual property - create relations between collections](#virtual-property)
-  
+  14. [Schema anti-patterns](#schema-anti-patterns)
 
 ## ***Introducing***
 
@@ -74,7 +74,7 @@ The native mongoDB manager software is Compass, and it can be installed as an op
 
 1. We need to install MongoDB Command Line Database Tools (https://www.mongodb.com/try/download/database-tools).
 2. Extract tools in C:\Program Files\MongoDB\Server\6.0\bin
-3. Export: Open terminal on C:\Program Files\MongoDB\Server\6.0\bin>mongodump -d YourDataBaseName  dump/YourDataBaseName. This command will create "dump" folder and inside folder with desired database.
+3. Export: Open terminal on C:\Program Files\MongoDB\Server\6.0\bin>mongodump -d YourDataBaseName. This command will create "dump" folder and inside folder with desired database. Database name are case-sesitive.
 4. Import: Open terminal on C:\Program Files\MongoDB\Server\6.0\bin>mongorestore -d YourDataBaseName  pathToDatabase.
 
 - There is attached snapshots in this folder, that describe those operation.
@@ -390,3 +390,11 @@ export interface IProductModel extends mongoose.Document {
 
 **[⬆ back to top](#table-of-contents)**
 
+
+## ***Schema anti-patterns***
+
+Great article about how *not* to design your work with MongoDB, maybe i will summarize it in this tutorial later.
+
+https://www.mongodb.com/developer/products/mongodb/schema-design-anti-pattern-summary/
+
+**[⬆ back to top](#table-of-contents)**
